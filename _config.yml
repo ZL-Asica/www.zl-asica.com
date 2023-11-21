@@ -145,6 +145,7 @@ nofollow:
     - 'www.fghrsh.net'
     - 'www.kizunaai.fun'
     - 'www.acfox.cc'
+    - 'www.zla.pub'
 
 deploy:
   type: git
