@@ -1,7 +1,7 @@
 # ZL Asica的博客源代码
 
 ## 1. 使用的库及对应的版本号/仓库链接
-- hexo (7.0.0)
+- hexo (7.1.1)
 - hexo-html-minifier (1.0.0)
 	- https://github.com/hexojs/hexo-html-minifier
 - hexo-generator-sitemap(3.0.1)
@@ -13,7 +13,6 @@
 - hexo-permalink-pinyin (1.1.0)
 	- https://github.com/viko16/hexo-permalink-pinyin
 - hexo-filter-nofollow (2.0.2)
-	- 
 
 ## 2. Upate logs
 
