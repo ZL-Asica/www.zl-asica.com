@@ -38,7 +38,7 @@ jobs:
         run: npx hexo generate
       - name: Purge unused CSS 🧹
         run: |
-          pnpm install -g purgecss
+          npm install -g purgecss
           purgecss -c purgecss.config.js
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
