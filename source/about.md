@@ -10,9 +10,10 @@ date: 2019/3/20 14:00:00
 这个页面是关于我的一个自我介绍页面
 坐表加利福尼亚尔湾，UC Irvine本科在读
 专业为Computer Science, Informatics双专业，辅修Health Informatics(医学信息学)。
-创建并拥有一个字幕组[白鲸字幕组](https://www.belugasubs.com)
+关于更多我的学术信息请访问我的[学术网站](https://www.zla.app/)
+[白鲸字幕组](https://www.belugasubs.com)创始人/组长
 社交平台联系方式全在左边，需要的可以联系我哦
-交换友链请点击左侧[我的朋友](https://www.zla.pub/friends)查看详情
+交换友链请点击左侧[我的朋友](https://www.zl-asica.com/friends)查看详情
 平常会编写一些小的程序、上学、写代码、写网站、剪视频之类的。
 
 ## 创建此博客的意图
@@ -21,7 +22,7 @@ date: 2019/3/20 14:00:00
 
 ## 关于此博客
 
-此博客基于[Hexo](https://hexo.io/) 搭建，部署在上海腾讯云服务器，并且采用 [Markdown](https://www.markdownguide.org/) 语法来写文章。想要访问我的Wordpress站点可以[点击这里](https://www.zla.pub/)。
+此博客基于[Hexo](https://hexo.io/) 搭建，部署在GitHub Pages，并且采用 [Markdown](https://www.markdownguide.org/) 语法来写文章。想要访问我的Wordpress站点可以[点击这里](https://www.zla.pub/)。
 
 ## 给予我鼓励
 

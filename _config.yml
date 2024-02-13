@@ -137,15 +137,15 @@ nofollow:
   field: site
   exclude:
     - "www.aifans.cc"
-    - "www.belugasubs.com"
+    - "belugasubs.com"
     - "www.pccstudio.com"
-    - "www.fghrsh.net"
+    - "fghrsh.net"
     - "www.nexmoe.com"
     - "www.diygod.me"
-    - "www.fghrsh.net"
     - "www.kizunaai.fun"
     - "www.acfox.cc"
-    - "www.zla.pub"
+    - "zla.pub"
+    - "zla.app"
 
 deploy:
   type: git
