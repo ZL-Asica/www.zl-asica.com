@@ -52,6 +52,12 @@ layout: py
 "link": "https://nexmoe.com/",
 "img": "https://cravatar.cn/avatar/c7fd185f8c967dec20c29c75a40b9e09?s=500",
 "des": "为热爱战斗着，努力学着变得勇敢"
+},
+{
+"title": "「云华」CloudSino",
+"link": "https://cloud.sd.cn/",
+"img": "https://ipfs.crossbell.io/ipfs/QmPv8huiCrnyDkGWHCNnd16vrpmZqt2TpVauhDuMv16Cok?img-quality=75&img-format=auto&img-onerror=redirect&img-width=384",
+"des": "愿我的祝福与你同在！"
 }
 ]
 {% endlinks %}
