@@ -5,10 +5,26 @@ on:
     branches:
       - master
       - main
+    paths:
+      - "scaffolds/**"
+      - "source/**"
+      - "themes/**"
+      - "_config.yml"
+      - "_config.*.yml"
+      - "package.json"
+      - "package-lock.json"
   push:
     branches:
       - master
       - main
+    paths:
+      - "scaffolds/**"
+      - "source/**"
+      - "themes/**"
+      - "_config.yml"
+      - "_config.*.yml"
+      - "package.json"
+      - "package-lock.json"
 
 permissions:
   contents: write
