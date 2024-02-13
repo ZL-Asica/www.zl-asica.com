@@ -23,12 +23,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "latest" # Use the latest Node.js version
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: "latest" # Use the latest pnpm version
       - name: Install dependencies 📁
-        run: pnpm install
+        run: npm install
       - name: Generate Hexo static files
         run: hexo generate
       - name: Purge unused CSS 🧹
