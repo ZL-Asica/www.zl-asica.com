@@ -21,20 +21,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "latest" # Use the latest Node.js version
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: "latest"
       - name: Install Prettier 💾
-        run: pnpm install --save-dev --save-exact prettier @shopify/prettier-plugin-liquid
+        run: npm install --save-dev --save-exact prettier @shopify/prettier-plugin-liquid
       - name: Prettier Check 🔎
         id: prettier
-        run: pnpx prettier . --check
+        run: npx prettier . --check
       - name: Create diff 📝
         # https://docs.github.com/en/actions/learn-github-actions/expressions#failure
         if: ${{ failure() }}
         run: |
-          pnpx prettier . --write
+          npx prettier . --write
           git diff -- . ':(exclude)package-lock.json' ':(exclude)package.json' > diff.txt
           npm install -g diff2html-cli
           diff2html -i file -s side -F diff.html -- diff.txt
