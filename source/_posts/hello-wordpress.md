@@ -8,6 +8,7 @@ cover: https://fp1.fghrsh.net/2020/11/21/c5b62e4a467dc27d2e446bcafa053a94.png
 coverWidth: 200
 coverHeight: 120
 ---
+
 ## Hexo？
 
 在来到WordPress以前，我的博客使用的是Hexo作为静态页面生成器，主题使用的是[nexmoe主题](https://github.com/nexmoe/hexo-theme-nexmoe)，并做了稍微改动，WordPress站 [https://www.zla.moe](https://www.zla.moe)。<!-- more -->

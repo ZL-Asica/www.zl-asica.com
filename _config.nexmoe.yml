@@ -1,8 +1,8 @@
 avatar: https://s2.loli.net/2024/01/10/kZonzQIKdfhreAP.jpg # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://fp1.fghrsh.net/2020/02/08/e98ef4237e5bffafc457b8d1dad1da94.jpg!q80.jpeg
-    width: 1280
-    height: 726
+  path: https://fp1.fghrsh.net/2020/02/08/e98ef4237e5bffafc457b8d1dad1da94.jpg!q80.jpeg
+  width: 1280
+  height: 726
 favicon:
   href: https://www.zl-asica.com/favicon.ico # 网站图标
   type: image/x-icon # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
@@ -13,125 +13,125 @@ function: # 功能开关，可选值（true,false）
   copyCode: true # 是否允许复制代码块
 
 imageCDN: # 图片 CDN 功能
-  enable: false # 开启该功能  
+  enable: false # 开启该功能
   origin: /../../images/ # 图片原始目录
   to: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/ # 图片 CDN 域名
 
 # 自定义样式，启用后可在站点的source文件夹下新建custom.css自定义站点样式
 customStyles:
   - custom.css
-  
+
 # 附加图标库 使用说明：https://docs.nexmoe.com/config/icon
 iconlib: # //at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css
 
 menu:
-    回到首页:
-        - /
-        - icon-home
-    文章归档:
-        - /archive.html
-        - icon-container
-    我的朋友:
-        - /friends.html
-    # 给我赞助:
-    #     - https://nexmoe.com/donate.html
-    #     - icon-coffee
-    关于博主:
-        - /about.html
-        - icon-info-circle
-    WP站点:
-        - https://www.zla.pub
-        - icon-ellipsis
+  回到首页:
+    - /
+    - icon-home
+  文章归档:
+    - /archive.html
+    - icon-container
+  我的朋友:
+    - /friends.html
+  # 给我赞助:
+  #     - https://nexmoe.com/donate.html
+  #     - icon-coffee
+  关于博主:
+    - /about.html
+    - icon-info-circle
+  WP站点:
+    - https://www.zla.pub
+    - icon-ellipsis
 
 widgets:
-    - name: search
-      enable: true
-      options: 
-        search: 
-            type: engine # 可选engine（用搜索引擎搜索）、swiftype、或local（本地搜索）
-            url: https://cn.bing.com/search?q=site:zl-asica.com # 搜索引擎地址，在type为swiftype时无效 e.g:https://www.google.com/search?q={你的博客链接}
-            id: <swiftype-id> # swiftype的id，见启用教程。在type为engine时无效
-    - name: social
-      enable: true
-      options: 
-        social:
-            # QQ:
-            #     - https://jq.qq.com/?_wv=1027&k=5CfKHun
-            #     - icon-QQ
-            #     - rgb(249, 174, 8)
-            #     - rgba(249, 174, 8, .1)
-            Telegram:
-                - https://t.me/zl_asica
-                - icon-telegram
-                - rgb(42, 171, 238)
-                - rgba(42, 171, 238, .1)
-            哔哩哔哩:
-                - https://space.bilibili.com/29018759
-                - icon-bilibili
-                - rgb(231, 106, 141)
-                - rgba(231, 106, 141, .1)
-            GitHub:
-                - https://github.com/ZL-Asica/
-                - icon-github
-                - rgb(25, 23, 23)
-                - rgba(25, 23, 23, .1)
-            知乎:
-                - https://www.zhihu.com/people/zl-asica
-                - icon-zhihu
-                - rgb(30, 136, 229)
-                - rgba(30, 136, 229, .1)
-            Twitter:
-                - https://twitter.com/ZL_Asica
-                - icon-twitter
-                - rgb(59, 151, 239)
-                - rgba(59, 151, 239, .1)
-            E-Mail:
-                - mailto:zl@zla.moe
-                - icon-mail-fill
-                - rgb(247, 56, 101)
-                - rgba(247, 56, 101, .1)
-            微博:
-                - https://weibo.com/5907278427
-                - icon-weibo
-                - rgb(223, 32, 41)
-                - rgba(223, 32, 41, .1)
-            RSS:
-                - https://www.zl-asica.com/atom.xml
-                - icon-rss
-                - rgb(247, 132, 34)
-                - rgba(247, 132, 34, .1)
-    - name: category
-      enable: false
-    - name: tagcloud
-      enable: false
-      options: 
-        maxTagcloud: 17  # 标签云组件显示的标签数量，0 表示不限制
-    - name: hitokoto # 一言 widget
-      enable: true
-      options: 
-        widgetHitokoto: # 一言组件
-            loading_placeholder: '🚀 获取中...' # 正在一言时的占位符
-            loading_error_placeholder: '🐞 获取失败...' # 加载一言失败时的占位符
-            category: # 一言句子类型（可选），不配置的话随机获取，详见 https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
-    - name: archive #settings: widgetAchive
-      enable: false
-      options:
-        widgetAchive: #文章归档组件
-            archive_type: 'year' #按月展示还是按年展示
-            show_count: true  #是否展示数量
-    - name: recent_posts
-      enable: false
-    - name: link #settings: widgetLink
-      enable: false
-      options: 
-        widgetLink: #链接组件
-            - title: 折影轻梦
-              img: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png
-              link : https://nexmoe.com/
+  - name: search
+    enable: true
+    options:
+      search:
+        type: engine # 可选engine（用搜索引擎搜索）、swiftype、或local（本地搜索）
+        url: https://cn.bing.com/search?q=site:zl-asica.com # 搜索引擎地址，在type为swiftype时无效 e.g:https://www.google.com/search?q={你的博客链接}
+        id: <swiftype-id> # swiftype的id，见启用教程。在type为engine时无效
+  - name: social
+    enable: true
+    options:
+      social:
+        # QQ:
+        #     - https://jq.qq.com/?_wv=1027&k=5CfKHun
+        #     - icon-QQ
+        #     - rgb(249, 174, 8)
+        #     - rgba(249, 174, 8, .1)
+        Telegram:
+          - https://t.me/zl_asica
+          - icon-telegram
+          - rgb(42, 171, 238)
+          - rgba(42, 171, 238, .1)
+        哔哩哔哩:
+          - https://space.bilibili.com/29018759
+          - icon-bilibili
+          - rgb(231, 106, 141)
+          - rgba(231, 106, 141, .1)
+        GitHub:
+          - https://github.com/ZL-Asica/
+          - icon-github
+          - rgb(25, 23, 23)
+          - rgba(25, 23, 23, .1)
+        知乎:
+          - https://www.zhihu.com/people/zl-asica
+          - icon-zhihu
+          - rgb(30, 136, 229)
+          - rgba(30, 136, 229, .1)
+        Twitter:
+          - https://twitter.com/ZL_Asica
+          - icon-twitter
+          - rgb(59, 151, 239)
+          - rgba(59, 151, 239, .1)
+        E-Mail:
+          - mailto:zl@zla.moe
+          - icon-mail-fill
+          - rgb(247, 56, 101)
+          - rgba(247, 56, 101, .1)
+        微博:
+          - https://weibo.com/5907278427
+          - icon-weibo
+          - rgb(223, 32, 41)
+          - rgba(223, 32, 41, .1)
+        RSS:
+          - https://www.zl-asica.com/atom.xml
+          - icon-rss
+          - rgb(247, 132, 34)
+          - rgba(247, 132, 34, .1)
+  - name: category
+    enable: false
+  - name: tagcloud
+    enable: false
+    options:
+      maxTagcloud: 17 # 标签云组件显示的标签数量，0 表示不限制
+  - name: hitokoto # 一言 widget
+    enable: true
+    options:
+      widgetHitokoto: # 一言组件
+        loading_placeholder: "🚀 获取中..." # 正在一言时的占位符
+        loading_error_placeholder: "🐞 获取失败..." # 加载一言失败时的占位符
+        category: # 一言句子类型（可选），不配置的话随机获取，详见 https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
+  - name: archive #settings: widgetAchive
+    enable: false
+    options:
+      widgetAchive: #文章归档组件
+        archive_type: "year" #按月展示还是按年展示
+        show_count: true #是否展示数量
+  - name: recent_posts
+    enable: false
+  - name: link #settings: widgetLink
+    enable: false
+    options:
+      widgetLink: #链接组件
+        - title: 折影轻梦
+          img: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png
+          link: https://nexmoe.com/
 
 copyTip: "著作权归ZL Asica所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
 
-slotHead: | 
+slotHead: |
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DS0SN4Y59S"></script>
   <script>
@@ -144,8 +144,7 @@ slotHead: |
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208452553759319"
      crossorigin="anonymous"></script>
 
-slotFooter: | 
-
+slotFooter: |
 
 # 自定义侧边栏尾部内容
 slotSidebar: |
@@ -155,7 +154,7 @@ slotSidebar: |
   <a target="_blank" href="http://beian.miit.gov.cn/">鲁ICP备19057855号</a>
 
 # 评论框插槽
-slotComment: | 
+slotComment: |
   <div id="disqus_thread"></div>
   <script>
       /**
@@ -176,8 +175,7 @@ slotComment: |
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-slotCopyright: | 
+slotCopyright: |
   <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">CC BY-NC-SA 4.0 DEED</a> 协议进行许可
 
-slotArticleEnd: | 
-  
+slotArticleEnd: |

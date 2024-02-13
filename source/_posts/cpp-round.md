@@ -8,6 +8,7 @@ cover: https://fp1.fghrsh.net/2021/10/28/b3943f1893ee44bf1e909c3aa9e0341f.png!q8
 coverWidth: 1280
 coverHeight: 720
 ---
+
 ## 1.C++的四舍五入/向上取整/向下取整/截断
 
 我们在C++中有时会需要使用到数学运算，同样的可能会使用到标题提到的几种方式进行运算。实际上C++有一个库<cmath>可以直接实现这些方法操作。<!-- more -->
@@ -22,7 +23,7 @@ int main()
 	// 四舍五入
     a = std::round(a);
     std::cout << a << std::endl; // 44.0000
-	
+
 	// 向下取整
     a = std::floor(a);
     std::cout << a << std::endl; // 43.0000
@@ -30,7 +31,7 @@ int main()
 	// 向上取整
     a = std::ceil(a);
     std::cout << a << std::endl; // 44.0000
-   
+
 	// 截断
 	a = std::trunc(a);
     std::cout << a << std::endl; // 43.0000

@@ -8,11 +8,12 @@ cover: https://fp1.fghrsh.net/2022/03/16/964e35d136c980fed106e9a0509378f3.png!q8
 coverWidth: 546
 coverHeight: 312
 ---
+
 有需要的吗！！！我终于把PR教程做完了，一共10期，从今天10:30开始到9号10:30每天一期，都有CC字幕可以打开方便看
 点击订阅合集第一时间收到推送
 因为我就是从0基础小白开始自学的PR，我按照我的学习路径制作的一系列教程可能会比用了很多年Pr的大佬制作的更适合0基础小白，大佬们请手下留情<!-- more -->
 
->   bilibili视频合集链接 [https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665](https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665 "https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665")
+> bilibili视频合集链接 [https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665](https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665 "https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665")
 
 ![思维导图](https://s2.loli.net/2021/12/31/aD74yelLkjfUzNT.png "思维导图")
 
@@ -40,7 +41,7 @@ coverHeight: 312
 
 - 分辨率
 - 帧率
-- 编码格式  封装格式
+- 编码格式 封装格式
 - 码率/比特率
 
 ### 4.项目文件管理
@@ -56,8 +57,8 @@ coverHeight: 312
 
 - 首选项
 
-	- 媒体缓存
-	- 内存
+  - 媒体缓存
+  - 内存
 
 - 快捷键查询与设置
 
@@ -105,36 +106,36 @@ coverHeight: 312
 
 - 1)将片段添加到序列
 
-	- i与o选择入点出点
-	- 选择拖入音频OR视频OR全部
+  - i与o选择入点出点
+  - 选择拖入音频OR视频OR全部
 
 - 2)从序列中删除片段
 
-	- 删除剪辑并保留其空间
-	- 删除片段并自动关闭间隙
-	- 向前选择轨道工具(向后选择轨道工具)
-	- 摁住shift选中多个片段
-	- 摁住alt(option)复制片段
-	- ⌘+Z/control+Z撤销
+  - 删除剪辑并保留其空间
+  - 删除片段并自动关闭间隙
+  - 向前选择轨道工具(向后选择轨道工具)
+  - 摁住shift选中多个片段
+  - 摁住alt(option)复制片段
+  - ⌘+Z/control+Z撤销
 
 - 3)按顺序移动片段
 
-	- 直接拖拽进行移动
-	- 摁住⌘/control以后进行拖拽
-	- 链接选择项
-	- 剃刀工具
+  - 直接拖拽进行移动
+  - 摁住⌘/control以后进行拖拽
+  - 链接选择项
+  - 剃刀工具
 
 ### 2.导入图像及调整片段大小
 
 - 1)处理图像文件
 
-	- PSD
-	- 普通图像
+  - PSD
+  - 普通图像
 
 - 2)更改剪辑片段的大小
 
-	- 右键-设置为帧大小
-	- 效果面板(缩放  位置)
+  - 右键-设置为帧大小
+  - 效果面板(缩放 位置)
 
 ### 3.添加及删除轨道
 
@@ -148,7 +149,7 @@ coverHeight: 312
 ### 2.进行简单的音频调整
 
 - 音频剪辑混合器
-- 静音(mute)  独奏(solo)
+- 静音(mute) 独奏(solo)
 - 左右声道
 
 ### 3.标记功能
@@ -191,8 +192,8 @@ coverHeight: 312
 
 - 源修补
 
-	- 插入(,)
-	- 覆盖(.)
+  - 插入(,)
+  - 覆盖(.)
 
 - 轨道目标定位
 - 轨道锁定
@@ -206,7 +207,7 @@ coverHeight: 312
 - 帧混合
 - 光流法
 
-	- 预渲染
+  - 预渲染
 
 ### 5.比率拉伸工具(R)
 
@@ -218,7 +219,7 @@ coverHeight: 312
 
 - 小扳手
 
-	- 矢量示波器YUV
+  - 矢量示波器YUV
 
 ### 3. 基本校正面板
 
