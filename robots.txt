@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /page/
+Disallow: /tags/ 
+Disallow: /categories/
+Disallow: /uploads/
+Disallow: /preset/
+Disallow: /lib/
+
+Sitemap: https://zl-asica.com/sitemap.xml
+Sitemap: https://zl-asica.com/sitemap.txt
