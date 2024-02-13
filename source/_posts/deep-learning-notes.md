@@ -834,24 +834,24 @@ This notes' content are all based on https://www.coursera.org/specializations/de
   - At each position, element-wise multiplication is performed between the kernel and the overlapping image area, followed by a sum to produce an output feature map.
   - High values in the output feature map indicate the presence of a vertical edge at that location.
   - $
-        \begin{bmatrix}
-            1 & 0 & -1 \\
-            1 & 0 & -1 \\
-            1 & 0 & -1
-            \end{bmatrix}
-        $
+    \begin{bmatrix}
+    1 & 0 & -1 \\
+    1 & 0 & -1 \\
+    1 & 0 & -1
+    \end{bmatrix}
+    $
   - Based on this matrix example below, it will detect lighter on the left and darker on the right.
 
 - Horizontal Edge Detection
 
   - Brighter on the top and darker on the bottom
   - $
-        \begin{bmatrix}
-            1 & 1 & 1 \\
-            0 & 0 & 0 \\
-            -1 & -1 & -1
-            \end{bmatrix}
-        $
+    \begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & 0 & 0 \\
+    -1 & -1 & -1
+    \end{bmatrix}
+    $
   - TBC
 
 - Other Common Filters
@@ -859,21 +859,21 @@ This notes' content are all based on https://www.coursera.org/specializations/de
   - Sobel filter
 
     - $
-            \begin{bmatrix}
-                1 & 0 & -1 \\
-                2 & 0 & -2 \\
-                1 & 0 & -1
-                \end{bmatrix}
-            $
+      \begin{bmatrix}
+      1 & 0 & -1 \\
+      2 & 0 & -2 \\
+      1 & 0 & -1
+      \end{bmatrix}
+      $
 
   - Scharr filter
     - $
-            \begin{bmatrix}
-                3 & 0 & -3 \\
-                10 & 0 & -10 \\
-                3 & 0 & -3
-                \end{bmatrix}
-            $
+      \begin{bmatrix}
+      3 & 0 & -3 \\
+      10 & 0 & -10 \\
+      3 & 0 & -3
+      \end{bmatrix}
+      $
 
 - Padding
 
@@ -1071,7 +1071,7 @@ This notes' content are all based on https://www.coursera.org/specializations/de
     - Computational cost = \#filter params x \#filter positions x \#of filters
   - Ppointwise Convolution
     - Computational cost = \#filter params x \#filter positions x \# of filters
-      - {% katex %}n_c _ n_c _ filters{% endkatex %}
+      - {% katex %}n*c * n*c * filters{% endkatex %}
   - Cost of depthwise seprable convolution / normal convolution
     - {% katex %}\dfrac{1}{n_c} + \dfrac{1}{f^2}{% endkatex %}
 - MobileNet v2 Bottleneck

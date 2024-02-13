@@ -13,8 +13,7 @@
   - https://github.com/hexojs/hexo-generator-feed
 - hexo-permalink-pinyin (1.1.0)
   - https://github.com/viko16/hexo-permalink-pinyin
-- hexo-filter-nofollow (2.0.2)
-  -
+- ## hexo-filter-nofollow (2.0.2)
 
 ## 2. Upate logs
 
