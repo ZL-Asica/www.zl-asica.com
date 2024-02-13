@@ -1,0 +1,40 @@
+name: Deploy Hexo Site
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+  push:
+    branches:
+      - master
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest" # Use the latest Node.js version
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+      - name: Install dependencies 📁
+        run: pnpm install
+      - name: Generate Hexo static files
+        run: hexo generate
+      - name: Purge unused CSS 🧹
+        run: |
+          pnpm install -g purgecss
+          purgecss -c purgecss.config.js
+      - name: Deploy 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./public
