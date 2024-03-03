@@ -22,6 +22,11 @@
 
 ## 3. Update logs
 
+### [3.1.1] - 2024-03-03
+
+- Update 头像更改为Gravatar V2EX境内镜像站。
+- Update 将网站部署到Cloudflare Pages, 实现全站CDN。
+
 ### [3.1.0] - 2024-02-12
 
 - Add 新增调用GitHub Workflow实现自动化generate + publish，无需本地操作

@@ -1,12 +1,14 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "zl-asica_hexo_blog",
+  "version": "3.1.1",
   "private": true,
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "prettier-check": "prettier --check .",
+    "prettier-write": "prettier --write ."
   },
   "hexo": {
     "version": "7.1.1"
@@ -32,5 +34,8 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-theme-nexmoe": "^4.2.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }
