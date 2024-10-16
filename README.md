@@ -7,8 +7,6 @@
 
 ## 2. Plugins
 
-- hexo-html-minifier
-  - https://github.com/hexojs/hexo-html-minifier
 - hexo-generator-sitemap
   - https://github.com/hexojs/hexo-generator-sitemap
 - hexo-math
@@ -21,6 +19,12 @@
   - https://github.com/hexojs/hexo-filter-nofollow
 
 ## 3. Update logs
+
+### [3.1.2] - 2024-10-15
+
+- Remove hexo-html-minifier，因为这个插件长时间未更新。
+- Update 网页 Background 图片更新
+- Update Hexo 更新到`hexo 7.3.0`
 
 ### [3.1.1] - 2024-03-03
 

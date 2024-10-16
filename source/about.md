@@ -2,15 +2,16 @@
 type: "about"
 layout: about
 title: 关于
-date: 2019/3/20 14:00:00
+date: 2024/10/15 14:00:00
 ---
 
 ## 自我介绍
 
 这个页面是关于我的一个自我介绍页面
-坐表加利福尼亚尔湾，UC Irvine本科在读
-专业为Computer Science, Informatics双专业，辅修Health Informatics(医学信息学)。
+坐表[Evanston, IL](https://www.google.com/maps/place/Evanston,+IL/)，Northwestern University 硕士在读。
+项目为MSCS，方向是医学+HCI+ML。
 关于更多我的学术信息请访问我的[学术网站](https://www.zla.app/)
+
 [白鲸字幕组](https://www.belugasubs.com)创始人/组长
 社交平台联系方式全在左边，需要的可以联系我哦
 交换友链请点击左侧[我的朋友](https://www.zl-asica.com/friends)查看详情
@@ -27,8 +28,10 @@ date: 2019/3/20 14:00:00
 ## 给予我鼓励
 
 各位大佬打赏一下我吧ヾ(=･ω･=)o，目前支持支付宝、微信、和paypal国际版哦
+
 PayPal国际站的赞助可以[点击此处跳转](https://paypal.me/ZLasica)！
+
 支付宝 ![支付宝](https://s2.loli.net/2023/11/19/KojHf6wu8J9ySp2.jpg "支付宝")
-微信![微信](https://s2.loli.net/2023/11/19/AePokujq2EwM6yX.jpg "微信")小结
+微信![微信](https://s2.loli.net/2023/11/19/AePokujq2EwM6yX.jpg "微信")
 
 博客开启了[RSS](https://www.zl-asica.com/atom.xml)，需要的可以关注一下。
