@@ -8,7 +8,7 @@ date: 2024/10/15 14:00:00
 ## 自我介绍
 
 这个页面是关于我的一个自我介绍页面
-坐表[Evanston, IL](https://www.google.com/maps/place/Evanston,+IL/)，Northwestern University 硕士在读。
+坐标[Evanston, IL](https://www.google.com/maps/place/Evanston,+IL/)，Northwestern University 硕士在读。
 项目为MSCS，方向是医学+HCI+ML。
 关于更多我的学术信息请访问我的[学术网站](https://www.zla.app/)
 
