@@ -20,11 +20,12 @@
 
 ## 3. Update logs
 
-### [3.1.2] - 2024-10-15
+### [3.1.3] - 2024-10-15
 
 - Remove hexo-html-minifier，因为这个插件长时间未更新。
 - Update 网页 Background 图片更新
 - Update Hexo 更新到`hexo 7.3.0`
+- Add 增加 Husky 进行 commit 时自动格式化。
 
 ### [3.1.1] - 2024-03-03
 
