@@ -6,7 +6,7 @@
   <link href="https://www.zl-asica.com/atom.xml" rel="self"/>
   
   <link href="https://www.zl-asica.com/"/>
-  <updated>2024-10-16T04:33:10.158Z</updated>
+  <updated>2024-10-16T04:45:26.321Z</updated>
   <id>https://www.zl-asica.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.zl-asica.com/2023/2023-annual-summary/"/>
     <id>https://www.zl-asica.com/2023/2023-annual-summary/</id>
     <published>2023-12-31T15:59:59.000Z</published>
-    <updated>2024-10-16T04:33:10.158Z</updated>
+    <updated>2024-10-16T04:45:26.321Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -42,7 +42,7 @@
     <link href="https://www.zl-asica.com/2023/deep-learning-notes/"/>
     <id>https://www.zl-asica.com/2023/deep-learning-notes/</id>
     <published>2023-11-17T18:18:00.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;p&gt;This notes’ content are all based on &lt;a href=&quot;https://www.coursera.org/specializations/deep-learning&quot;&gt;https://www.coursera.org/specializations/deep-learning&lt;/a&gt;</summary>
@@ -61,7 +61,7 @@
     <link href="https://www.zl-asica.com/2023/python-cipher-reverse-string/"/>
     <id>https://www.zl-asica.com/2023/python-cipher-reverse-string/</id>
     <published>2023-01-18T06:55:00.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-什么是反转字符串&quot;&gt;&lt;a href=&quot;#1-什么是反转字符串&quot; class=&quot;headerlink&quot; title=&quot;1. 什么是反转字符串&quot;&gt;&lt;/a&gt;1. 什么是反转字符串&lt;/h2&gt;&lt;p&gt;反转字符串其实就是把一个string类型的字符串变量进行从头到尾的一个反转，比如’hello!’经过反转后我们就可以得到’!olleh’。如果只想看代码可以直接翻到!&lt;strong&gt;2.5&lt;/strong&gt;看代码段即可</summary>
@@ -80,7 +80,7 @@
     <link href="https://www.zl-asica.com/2023/numpy-only-confusion-matrix/"/>
     <id>https://www.zl-asica.com/2023/numpy-only-confusion-matrix/</id>
     <published>2023-01-16T05:28:00.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-什么是混淆矩阵-confusion-matrix&quot;&gt;&lt;a href=&quot;#1-什么是混淆矩阵-confusion-matrix&quot; class=&quot;headerlink&quot; title=&quot;1 什么是混淆矩阵(confusion matrix)&quot;&gt;&lt;/a&gt;1 什么是混淆矩阵(confusion matrix)&lt;/h2&gt;&lt;p&gt;当我们拿到数据后，经过数据清洗、预处理和整理之后，我们做的第一步是利用这些数据训练出一个模型。我们究竟如何衡量模型的准确度和有效性？性能和效率又如何？这就是混淆矩阵被用来解决的问题。混淆矩阵是机器学习分类的性能的一种方式。</summary>
@@ -99,7 +99,7 @@
     <link href="https://www.zl-asica.com/2022/cpp-round/"/>
     <id>https://www.zl-asica.com/2022/cpp-round/</id>
     <published>2022-03-25T23:26:00.000Z</published>
-    <updated>2024-10-16T04:33:10.158Z</updated>
+    <updated>2024-10-16T04:45:26.321Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-C-的四舍五入-向上取整-向下取整-截断&quot;&gt;&lt;a href=&quot;#1-C-的四舍五入-向上取整-向下取整-截断&quot; class=&quot;headerlink&quot; title=&quot;1.C++的四舍五入&amp;#x2F;向上取整&amp;#x2F;向下取整&amp;#x2F;截断&quot;&gt;&lt;/a&gt;1.C++的四舍五入&amp;#x2F;向上取整&amp;#x2F;向下取整&amp;#x2F;截断&lt;/h2&gt;&lt;p&gt;我们在C++中有时会需要使用到数学运算，同样的可能会使用到标题提到的几种方式进行运算。实际上C++有一个库&lt;cmath&gt;可以直接实现这些方法操作。</summary>
@@ -118,7 +118,7 @@
     <link href="https://www.zl-asica.com/2021/zla-pr-2022-intro-level/"/>
     <id>https://www.zl-asica.com/2021/zla-pr-2022-intro-level/</id>
     <published>2021-12-31T04:12:00.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;p&gt;有需要的吗！！！我终于把PR教程做完了，一共10期，从今天10:30开始到9号10:30每天一期，都有CC字幕可以打开方便看&lt;br&gt;点击订阅合集第一时间收到推送&lt;br&gt;因为我就是从0基础小白开始自学的PR，我按照我的学习路径制作的一系列教程可能会比用了很多年Pr的大佬制作的更适合0基础小白，大佬们请手下留情</summary>
@@ -137,7 +137,7 @@
     <link href="https://www.zl-asica.com/2021/western-union-20-amazon-gc/"/>
     <id>https://www.zl-asica.com/2021/western-union-20-amazon-gc/</id>
     <published>2021-11-09T07:03:00.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-西联汇款介绍-Western-Union&quot;&gt;&lt;a href=&quot;#1-西联汇款介绍-Western-Union&quot; class=&quot;headerlink&quot; title=&quot;1.西联汇款介绍(Western Union)&quot;&gt;&lt;/a&gt;1.西联汇款介绍(Western Union)&lt;/h2&gt;&lt;p&gt;西联汇款（Western Union, NYSE：WU）于1851年在纽约成立，現在總部在美國科羅拉多州丹佛市（Denver）。是世界上领先的特快汇款公司，迄今已有150年的历史，它拥有全球最大最先进的电子汇兑金融网络，代理网点遍布全球近200个国家和地区。 西联公司是美国财富五百强之一的第一数据公司（FDC）的子公司。</summary>
@@ -156,7 +156,7 @@
     <link href="https://www.zl-asica.com/2021/cpp-2d-dynamical-array/"/>
     <id>https://www.zl-asica.com/2021/cpp-2d-dynamical-array/</id>
     <published>2021-10-28T00:21:00.000Z</published>
-    <updated>2024-10-16T04:33:10.158Z</updated>
+    <updated>2024-10-16T04:45:26.321Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-C-的动态数组-Dynamically-allocated-Single-Dimension-arrays&quot;&gt;&lt;a href=&quot;#1-C-的动态数组-Dynamically-allocated-Single-Dimension-arrays&quot; class=&quot;headerlink&quot; title=&quot;1.C++的动态数组(Dynamically-allocated Single-Dimension arrays)&quot;&gt;&lt;/a&gt;1.C++的动态数组(Dynamically-allocated Single-Dimension arrays)&lt;/h2&gt;&lt;p&gt;当无法使用静态分配的数组时 — 因为你在编译时不知道合适的大小，或该数组太大而无法合理地放入运行时堆栈，或该数组的生命周期比创建它的函数更长。动态分配数组涉及到使用new运算符，类似于其他对象的动态分配，不同之处在于数组需要我们另外指定大小。</summary>
@@ -175,7 +175,7 @@
     <link href="https://www.zl-asica.com/2021/java-get-date-after-several-work-day/"/>
     <id>https://www.zl-asica.com/2021/java-get-date-after-several-work-day/</id>
     <published>2021-10-27T23:09:00.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1.前言&quot;&gt;&lt;/a&gt;1.前言&lt;/h2&gt;&lt;p&gt;前几天写作业的时候碰到一道题目，题目大意如下&lt;/p&gt;
@@ -196,7 +196,7 @@
     <link href="https://www.zl-asica.com/2020/ffmpeg/"/>
     <id>https://www.zl-asica.com/2020/ffmpeg/</id>
     <published>2020-11-21T03:01:28.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;FFmpeg 是一个开放源代码的自由软件，可以运行音频和视频多种格式的录影、转换、流功能，包含了libavcodec——这是一个用于多个项目中音频和视频的解码器库，以及libavformat——一个音频与视频格式转换库。 “FFmpeg”这个单词中的“FF”指的是“Fast Forward”。</summary>
@@ -215,7 +215,7 @@
     <link href="https://www.zl-asica.com/2020/hello-wordpress/"/>
     <id>https://www.zl-asica.com/2020/hello-wordpress/</id>
     <published>2020-02-29T16:00:00.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Hexo？&quot;&gt;&lt;a href=&quot;#Hexo？&quot; class=&quot;headerlink&quot; title=&quot;Hexo？&quot;&gt;&lt;/a&gt;Hexo？&lt;/h2&gt;&lt;p&gt;在来到WordPress以前，我的博客使用的是Hexo作为静态页面生成器，主题使用的是&lt;a href=&quot;https://github.com/nexmoe/hexo-theme-nexmoe&quot;&gt;nexmoe主题&lt;/a&gt;，并做了稍微改动，WordPress站 &lt;a href=&quot;https://www.zla.moe/&quot;&gt;https://www.zla.moe&lt;/a&gt;。</summary>
@@ -234,7 +234,7 @@
     <link href="https://www.zl-asica.com/2019/raspberry-pie-qbittorrent-nox/"/>
     <id>https://www.zl-asica.com/2019/raspberry-pie-qbittorrent-nox/</id>
     <published>2019-11-19T01:21:54.000Z</published>
-    <updated>2024-10-16T04:33:10.159Z</updated>
+    <updated>2024-10-16T04:45:26.322Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;我买回家树莓派 3B+以后，就一直没有把它充分的利用起来，仅仅做了一个无线打印机还有一个内网访问的网站。这段时间正好接触到了种子，感觉拿来做一个种子的服务器还是不错的。</summary>
@@ -253,7 +253,7 @@
     <link href="https://www.zl-asica.com/2019/microsoft-office-tu-biao-huan-xin-office-tu-biao-die-dai-shi/"/>
     <id>https://www.zl-asica.com/2019/microsoft-office-tu-biao-huan-xin-office-tu-biao-die-dai-shi/</id>
     <published>2019-10-14T01:00:00.000Z</published>
-    <updated>2024-10-16T04:33:10.158Z</updated>
+    <updated>2024-10-16T04:45:26.321Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;如果你安装的是 Office 2019 或者 Office 365，那么一定发现，你的 Office 图标…换…新…了…！和旧版相比，新版 Office 图标延续了扁平画风，但现代感更强。微立体、渐变色这些 2019 年流行的元素，几乎都可以在这套新图标中找到。</summary>
@@ -272,7 +272,7 @@
     <link href="https://www.zl-asica.com/2019/mac-centos7-xampp-da-jian-discuz-lun-tan/"/>
     <id>https://www.zl-asica.com/2019/mac-centos7-xampp-da-jian-discuz-lun-tan/</id>
     <published>2019-08-18T16:00:00.000Z</published>
-    <updated>2024-10-16T04:33:10.158Z</updated>
+    <updated>2024-10-16T04:45:26.321Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我本人当年在建站的时候使用的就是上述配置，但由于网上教程基本都是适用于 Windows 和老版 xampp 的教程，在 Mac 系统和新版的 xampp 有些地方已经不是很适用，所以当时我建站路程格外的辛苦，几乎翻看过所有能从谷歌上找到的相关文章，今天我就给大家写一下我当时建站的流程，供大家参考借鉴。如有错误，欢迎在下放留言指出。</summary>
