@@ -2,21 +2,15 @@
 
 ## 1. Theme
 
-- nexmoe(with contributions)
-  - https://github.com/theme-nexmoe/hexo-theme-nexmoe
+- [nexmoe](https://github.com/theme-nexmoe/hexo-theme-nexmoe)(with contributions)
 
 ## 2. Plugins
 
-- hexo-generator-sitemap
-  - https://github.com/hexojs/hexo-generator-sitemap
-- hexo-math
-  - https://github.com/hexojs/hexo-math
-- hexo-generator-feed
-  - https://github.com/hexojs/hexo-generator-feed
-- hexo-permalink-pinyin
-  - https://github.com/viko16/hexo-permalink-pinyin
-- hexo-filter-nofollow
-  - https://github.com/hexojs/hexo-filter-nofollow
+- [hexo-generator-sitemap](https://github.com/hexojs/hexo-generator-sitemap)
+- [hexo-math](https://github.com/hexojs/hexo-math)
+- [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed)
+- [hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin)
+- [hexo-filter-nofollow](https://github.com/hexojs/hexo-filter-nofollow)
 
 ## 3. Update logs
 
