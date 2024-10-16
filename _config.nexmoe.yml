@@ -1,8 +1,8 @@
 avatar: https://cdn.v2ex.com/gravatar/cba8b28739dd6225f6fe961762bdb0b71b858d68c83d946a37cee3b0e0daece5?size=512 # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-  path: https://fp1.fghrsh.net/2020/02/08/e98ef4237e5bffafc457b8d1dad1da94.jpg!q80.jpeg
-  width: 1280
-  height: 726
+  path: /katomegumi.jpg
+  width: 853
+  height: 480
 favicon:
   href: /favicon.ico # 网站图标
   type: image/x-icon # 图标类型，可能的值有(image/png, image/vnd.microsoft.icon, image/x-icon, image/gif)
@@ -143,6 +143,7 @@ slotHead: |
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208452553759319"
      crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/gh/zl-asica/web-cdn/js/zlasica.js"></script>
 
 slotFooter: |
 
