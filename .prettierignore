@@ -1,8 +1,8 @@
 package.json
 package-lock.json
+yarn.lock
+.yarn/
 pnpm-lock.yaml
-node_modules/
 public/
-.vscode/
 node_modules/
 .husky/

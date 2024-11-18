@@ -38,11 +38,13 @@
   "devDependencies": {
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "@zl-asica/prettier-config": "^1.0.7"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,vue,css,md}": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@9.13.2"
 }

@@ -1,12 +1,12 @@
 title: ZL Asica的博客
-subtitle: "Blog"
-description: "ZL Asica的小站，分享各种技术知识与个人的技术记录。个人技术记录及小技巧分享、生活小分享、小知识，喜欢的话欢迎点进来康康(*≧∪≦)"
+subtitle: 'Blog'
+description: 'ZL Asica的小站，分享各种技术知识与个人的技术记录。个人技术记录及小技巧分享、生活小分享、小知识，喜欢的话欢迎点进来康康(*≧∪≦)'
 keywords: iOS, Mac, Android, Windows, Web, Java, Python, blog, ZL Asica, ZLA, Deep Learning, Machine Learning, DL, ML, Artificial Intelligence, AI
 author: ZL Asica
 language: zh-CN
-timezone: "Asia/Shanghai"
+timezone: 'Asia/Shanghai'
 url: https://www.zl-asica.com/
-permalink: ":year/:title/"
+permalink: ':year/:title/'
 permalink_defaults: null
 pretty_urls:
   trailing_index: true
@@ -17,20 +17,20 @@ tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: ":lang"
+i18n_dir: ':lang'
 # 跳过渲染所有txt和html文件，以及README
 skip_render:
-  - "README.md"
-  - "*.txt"
-  - "*.html"
-  - "*.pdf"
-new_post_name: ":title.md"
+  - 'README.md'
+  - '*.txt'
+  - '*.html'
+  - '*.pdf'
+new_post_name: ':title.md'
 default_layout: post
 titlecase: false
 external_link:
   enable: true
   field: site
-  exclude: ""
+  exclude: ''
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
@@ -40,18 +40,18 @@ highlight:
   enable: true
   line_number: true
   auto_detect: true
-  tab_replace: ""
+  tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
   enable: false
   preprocess: true
   line_number: true
-  tab_replace: ""
+  tab_replace: ''
 index_generator:
-  path: ""
+  path: ''
   per_page: 10
-  order_by: "-date"
+  order_by: '-date'
 default_category: uncategorized
 category_map: null
 tag_map: null
@@ -82,15 +82,15 @@ sitemap:
 # https://github.com/hexojs/hexo-math
 math:
   katex:
-    css: "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+    css: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css'
     options:
-      output: "mathml"
+      output: 'mathml'
       felqn: true
       minRuleThickness: 0.05
       throwOnError: false
 
   mathjax:
-    css: "https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css"
+    css: 'https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css'
     options:
       conversion:
         display: false
@@ -107,7 +107,7 @@ feed:
   hub:
   content:
   content_limit: 140
-  content_limit_delim: " "
+  content_limit_delim: ' '
   order_by: -date
   icon: https://s2.loli.net/2023/11/19/bU256ATetJuqFI4.jpg
   autodiscovery: true
@@ -116,7 +116,7 @@ feed:
 # https://github.com/viko16/hexo-permalink-pinyin
 permalink_pinyin:
   enable: true
-  separator: "-" # Separator of the slug, default: '-'
+  separator: '-' # Separator of the slug, default: '-'
   exclude: /ignore_post/ # Regex for which post should skip
 
 # 减少出站链接防止权重分散
@@ -124,16 +124,16 @@ nofollow:
   enable: true
   field: site
   exclude:
-    - "www.aifans.cc"
-    - "belugasubs.com"
-    - "www.pccstudio.com"
-    - "fghrsh.net"
-    - "www.nexmoe.com"
-    - "www.diygod.me"
-    - "www.kizunaai.fun"
-    - "www.acfox.cc"
-    - "zla.pub"
-    - "zla.app"
+    - 'www.aifans.cc'
+    - 'belugasubs.com'
+    - 'www.pccstudio.com'
+    - 'fghrsh.net'
+    - 'www.nexmoe.com'
+    - 'www.diygod.me'
+    - 'www.kizunaai.fun'
+    - 'www.acfox.cc'
+    - 'zla.pub'
+    - 'zla.app'
 
 deploy:
   type: git

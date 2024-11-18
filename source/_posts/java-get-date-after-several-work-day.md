@@ -29,7 +29,7 @@ coverHeight: 1120
 
 ## 3.方法
 
-根据教授的提示Java有一个非常适合解决这个问题的类 **_java.time.LocalDate_** 这里是官方文档[https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html "https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html") 有兴趣的可以自行查看。根据文档我们可以获得几个方法来帮我们解决问题。
+根据教授的提示Java有一个非常适合解决这个问题的类 **_java.time.LocalDate_** 这里是官方文档[https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html 'https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html') 有兴趣的可以自行查看。根据文档我们可以获得几个方法来帮我们解决问题。
 
 **LocalDate**
 

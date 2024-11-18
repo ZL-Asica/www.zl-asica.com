@@ -1,5 +1,5 @@
 ---
-type: "about"
+type: 'about'
 layout: about
 title: 关于
 date: 2024/10/15 14:00:00
@@ -31,7 +31,7 @@ date: 2024/10/15 14:00:00
 
 PayPal国际站的赞助可以[点击此处跳转](https://paypal.me/ZLasica)！
 
-支付宝 ![支付宝](https://s2.loli.net/2023/11/19/KojHf6wu8J9ySp2.jpg "支付宝")
-微信![微信](https://s2.loli.net/2023/11/19/AePokujq2EwM6yX.jpg "微信")
+支付宝 ![支付宝](https://s2.loli.net/2023/11/19/KojHf6wu8J9ySp2.jpg '支付宝')
+微信![微信](https://s2.loli.net/2023/11/19/AePokujq2EwM6yX.jpg '微信')
 
 博客开启了[RSS](https://www.zl-asica.com/atom.xml)，需要的可以关注一下。

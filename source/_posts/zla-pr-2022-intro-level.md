@@ -13,9 +13,9 @@ coverHeight: 312
 点击订阅合集第一时间收到推送
 因为我就是从0基础小白开始自学的PR，我按照我的学习路径制作的一系列教程可能会比用了很多年Pr的大佬制作的更适合0基础小白，大佬们请手下留情<!-- more -->
 
-> bilibili视频合集链接 [https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665](https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665 "https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665")
+> bilibili视频合集链接 [https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665](https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665 'https://space.bilibili.com/29018759/channel/collectiondetail?sid=94665')
 
-![思维导图](https://s2.loli.net/2021/12/31/aD74yelLkjfUzNT.png "思维导图")
+![思维导图](https://s2.loli.net/2021/12/31/aD74yelLkjfUzNT.png '思维导图')
 
 ## 一、课程与剪辑基础与流程介绍
 

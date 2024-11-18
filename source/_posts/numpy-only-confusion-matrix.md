@@ -15,7 +15,7 @@ cover: https://fp1.fghrsh.net/2023/11/21/fa92ecba96606ae9904ac744eb2cfe3b.jpg!q8
 
 我们可以使用这个矩阵直观地看到每个数据的真实值和我们模型的预测值的关系。
 
-![来源：https://b23.tv/dTJ48UB](https://fp1.fghrsh.net/2023/01/16/6132f3e171abcd5d08eb7df684b9cb7a.png!q80.jpeg "来源：https://b23.tv/dTJ48UB")
+![来源：https://b23.tv/dTJ48UB](https://fp1.fghrsh.net/2023/01/16/6132f3e171abcd5d08eb7df684b9cb7a.png!q80.jpeg '来源：https://b23.tv/dTJ48UB')
 
 ## 3 如何实现
 

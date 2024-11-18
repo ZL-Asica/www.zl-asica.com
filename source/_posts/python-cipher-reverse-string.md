@@ -18,7 +18,7 @@ cover: https://fp1.fghrsh.net/2023/11/21/1389e4ebb4a182ce051144f03c0a306c.jpg!q8
 ### 2.1 字符串的基本特性
 
 我们的String本质上就是一个类似列表(List)的存在。我们看下面的图，假设我们有一个String类型的变量为`test = "screen"`，我们可以通过下图的方式对它进行索引。每一个单独的字母就是这个"列表"里的一个单独的元素。我们可以使用如`test[0]`的方式来获取元素's'，也可以通过如`test[0:2]`的方式来获取元素'sc'，此处\[0:2]对应的是一个\[0,2)左闭右开的区间。那大家可能就想到了列表是可以反转(reverse)的，那么我们这个所谓的'列表'可不可以做同样的操作呢？答案是不行，String变量并没有reverse函数，所以我们就需要先讲字符串转换为真正的列表才可以进行反转。
-![String Slicing](https://s2.loli.net/2023/01/18/eIQ5f49hXRAlJ18.jpg "String Slicing")
+![String Slicing](https://s2.loli.net/2023/01/18/eIQ5f49hXRAlJ18.jpg 'String Slicing')
 
 ### 2.2 字符串转列表
 

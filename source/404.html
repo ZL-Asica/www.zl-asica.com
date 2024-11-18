@@ -20,16 +20,34 @@
       name="description"
       content="ZL Asica的小站，分享各种技术知识与个人的技术记录。个人技术记录及小技巧分享、生活小分享、小知识，喜欢的话欢迎点进来康康(*≧∪≦)"
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="ZL Asica的博客" />
-    <meta property="og:url" content="https://www.zl-asica.com/index.html" />
-    <meta property="og:site_name" content="ZL Asica的博客" />
+    <meta
+      property="og:type"
+      content="website"
+    />
+    <meta
+      property="og:title"
+      content="ZL Asica的博客"
+    />
+    <meta
+      property="og:url"
+      content="https://www.zl-asica.com/index.html"
+    />
+    <meta
+      property="og:site_name"
+      content="ZL Asica的博客"
+    />
     <meta
       property="og:description"
       content="ZL Asica的小站，分享各种技术知识与个人的技术记录。个人技术记录及小技巧分享、生活小分享、小知识，喜欢的话欢迎点进来康康(*≧∪≦)"
     />
-    <meta property="og:locale" content="zh_CN" />
-    <meta property="article:author" content="ZL Asica" />
+    <meta
+      property="og:locale"
+      content="zh_CN"
+    />
+    <meta
+      property="article:author"
+      content="ZL Asica"
+    />
     <meta
       property="article:tag"
       content="iOS, Mac, Android, Windows, Web, Java, Python, blog, ZL Asica, ZLA, Deep Learning, Machine Learning, DL, ML, Artificial Intelligence, AI"
@@ -118,13 +136,13 @@
       var num = 4;
       function redirect() {
         num--;
-        document.getElementById("num").innerHTML = num;
+        document.getElementById('num').innerHTML = num;
         if (num < 0) {
-          document.getElementById("num").innerHTML = 0;
-          location.href = "https://www.zl-asica.com";
+          document.getElementById('num').innerHTML = 0;
+          location.href = 'https://www.zl-asica.com';
         }
       }
-      setInterval("redirect()", 1000);
+      setInterval('redirect()', 1000);
     </script>
     <link
       rel="alternate"
@@ -151,34 +169,34 @@
     <script>
       console.clear();
       console.log(
-        "%c由ZL Asica制作搭建与运行",
-        "background:#fff;color:#000000",
+        '%c由ZL Asica制作搭建与运行',
+        'background:#fff;color:#000000'
       );
       console.log(getCurrentDate());
 
       function getCurrentDate() {
         var date = new Date();
-        var seperator1 = "-";
-        var seperator2 = ":";
+        var seperator1 = '-';
+        var seperator2 = ':';
         var hours = date.getHours();
         var minutes = date.getMinutes();
         var seconds = date.getSeconds();
         var month = date.getMonth() + 1;
         var strDate = date.getDate();
         if (month >= 1 && month <= 9) {
-          month = "0" + month;
+          month = '0' + month;
         }
         if (strDate >= 0 && strDate <= 9) {
-          strDate = "0" + strDate;
+          strDate = '0' + strDate;
         }
         if (hours >= 0 && hours <= 9) {
-          hours = "0" + hours;
+          hours = '0' + hours;
         }
         if (minutes >= 0 && minutes <= 9) {
-          minutes = "0" + minutes;
+          minutes = '0' + minutes;
         }
         if (seconds >= 0 && seconds <= 9) {
-          seconds = "0" + seconds;
+          seconds = '0' + seconds;
         }
         var currentdate =
           date.getFullYear() +
@@ -186,7 +204,7 @@
           month +
           seperator1 +
           strDate +
-          " " +
+          ' ' +
           hours +
           seperator2 +
           minutes +

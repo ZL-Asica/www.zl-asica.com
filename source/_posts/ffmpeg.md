@@ -14,35 +14,35 @@ FFmpeg 是一个开放源代码的自由软件，可以运行音频和视频多�
 ## 安装
 
 本文只单独介绍如何在Windows和macOS下安装FFmpeg，暂不讨论在Linux下的情况。
-FFmpeg的官网为[https://ffmpeg.org/download.html](https://ffmpeg.org/download.html "FFmpeg官网下载")
+FFmpeg的官网为[https://ffmpeg.org/download.html](https://ffmpeg.org/download.html 'FFmpeg官网下载')
 
 ### Windows
 
 1. 首先打开上面的官网下载链接，找到Windows模块下的**Windows builds from gyan.dev**
-   ![FFmpeg Windows 下载](https://fp1.fghrsh.net/2020/11/20/eb0419bb2003e19d9fbfa442f5cef2e4.png!q80.jpeg "FFmpeg Windows 下载")
+   ![FFmpeg Windows 下载](https://fp1.fghrsh.net/2020/11/20/eb0419bb2003e19d9fbfa442f5cef2e4.png!q80.jpeg 'FFmpeg Windows 下载')
 2. 在新打开的gyan.dev的页面中找到Release部分，Links里第一个full(如红箭头所示)的链接直接点击下载FFmpeg的最新版压缩包。
-   ![Release](https://fp1.fghrsh.net/2020/11/20/31a77a4f34769e3734d5c5d9e0695fe3.png!q80.jpeg "Release")
+   ![Release](https://fp1.fghrsh.net/2020/11/20/31a77a4f34769e3734d5c5d9e0695fe3.png!q80.jpeg 'Release')
 3. 下载下来的7z安装包先**解压**，然后将解压后的文件夹放至你不会随意删掉或改动为止的路径下(如C盘的Program Files但不是必须放到C盘)。
 4. 复制ffmpeg解压后文件夹内的**bin文件夹路径**(如下图所示)
-   ![复制bin文件夹路径](https://fp1.fghrsh.net/2020/11/20/59a6b13244ed5b8067c6713f1be6b401.png!q80.jpeg "复制bin文件夹路径")
+   ![复制bin文件夹路径](https://fp1.fghrsh.net/2020/11/20/59a6b13244ed5b8067c6713f1be6b401.png!q80.jpeg '复制bin文件夹路径')
 5. 打开**设置-系统-关于-高级系统设置**
-   ![设置-系统](https://fp1.fghrsh.net/2020/11/20/ff45fd6d9fb66b3d514ab3df78e9884f.png!q80.jpeg "设置-系统")
-   ![系统-关于-高级系统设置](https://fp1.fghrsh.net/2020/11/20/c5eb8ffc8e4de9b2ccd7fc07e14db3a8.png!q80.jpeg "系统-关于-高级系统设置")
+   ![设置-系统](https://fp1.fghrsh.net/2020/11/20/ff45fd6d9fb66b3d514ab3df78e9884f.png!q80.jpeg '设置-系统')
+   ![系统-关于-高级系统设置](https://fp1.fghrsh.net/2020/11/20/c5eb8ffc8e4de9b2ccd7fc07e14db3a8.png!q80.jpeg '系统-关于-高级系统设置')
 6. 打开高级系统设置后点开**环境变量**，找到系统变量中的**Path变量**双击点开。
-   ![环境变量](https://fp1.fghrsh.net/2020/11/20/fb5e5b045a39ae6ed46e9cda2dd8f8a1.png!q80.jpeg "环境变量")
-   ![Path变量](https://fp1.fghrsh.net/2020/11/20/c1a1cf1c95d560569fbdf8012551f9d0.png!q80.jpeg "Path变量")
+   ![环境变量](https://fp1.fghrsh.net/2020/11/20/fb5e5b045a39ae6ed46e9cda2dd8f8a1.png!q80.jpeg '环境变量')
+   ![Path变量](https://fp1.fghrsh.net/2020/11/20/c1a1cf1c95d560569fbdf8012551f9d0.png!q80.jpeg 'Path变量')
 7. 新打开的页面点击右边的**新建**,粘贴进去在第四步复制的bin文件夹链接
-   ![新建变量](https://fp1.fghrsh.net/2020/11/20/36629f1c594f07fcacd0ad524643b4a0.png!q80.jpeg "新建变量")
+   ![新建变量](https://fp1.fghrsh.net/2020/11/20/36629f1c594f07fcacd0ad524643b4a0.png!q80.jpeg '新建变量')
 8. 添加完后一步一步确定-确定-确定。
 9. win+R，输入cmd，回车，打开cmd
-   ![win+R](https://fp1.fghrsh.net/2020/11/20/eafe876dadc0ed996c6600897b7af063.png!q80.jpeg "win+R")
+   ![win+R](https://fp1.fghrsh.net/2020/11/20/eafe876dadc0ed996c6600897b7af063.png!q80.jpeg 'win+R')
 10. 输入FFmpeg并回车测试是否安装成功，显示类似下图即为安装成功
-    ![cmd-FFmpeg](https://fp1.fghrsh.net/2020/11/20/77d175d0e2838872099b7ddacebc3c7c.png!q80.jpeg "cmd-FFmpeg")
+    ![cmd-FFmpeg](https://fp1.fghrsh.net/2020/11/20/77d175d0e2838872099b7ddacebc3c7c.png!q80.jpeg 'cmd-FFmpeg')
 
 ### macOS
 
 1. command+空格打开聚焦搜索，输入terminal并回车打开终端
-   ![terminal](https://fp1.fghrsh.net/2020/11/20/37e1c7c5f41f29872de6d79b1f8ee7cd.jpg!q80.jpeg "terminal")
+   ![terminal](https://fp1.fghrsh.net/2020/11/20/37e1c7c5f41f29872de6d79b1f8ee7cd.jpg!q80.jpeg 'terminal')
 2. 输入下述命令安装homebrew
 
 ```bash
@@ -56,7 +56,7 @@ brew install ffmpeg
 ```
 
 4. 安装完成后输入ffmpeg测试是否安装成功，显示类似下图即为安装成功
-   ![ffmpeg测试](https://fp1.fghrsh.net/2020/11/20/5a4da6f8abe1b08ec06a8be0dc38debf.png!q80.jpeg "ffmpeg测试")
+   ![ffmpeg测试](https://fp1.fghrsh.net/2020/11/20/5a4da6f8abe1b08ec06a8be0dc38debf.png!q80.jpeg 'ffmpeg测试')
 
 ## 基础使用
 
