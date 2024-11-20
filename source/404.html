@@ -1,217 +1,146 @@
 <!doctype html>
-<html>
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8" />
-    <title>404 - ZL Asica的博客</title>
-    <meta
-      name="keywords"
-      content="iOS, Mac, Android, Windows, Web, Java, Python, blog, ZL Asica, ZLA, Deep Learning, Machine Learning, DL, ML, Artificial Intelligence, AI"
-    />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=5"
+      content="width=device-width, initial-scale=1.0"
     />
+    <title>404 - (；′⌒) 页面迷路啦~`</title>
+    <!-- Robots Meta -->
+    <meta
+      name="robots"
+      content="nofollow, noarchive"
+    />
+    <!-- Favicon -->
     <link
-      rel="shortcut icon"
-      href="https://www.zl-asica.com/favicon.ico"
+      rel="icon"
+      href="/favicon.ico"
       type="image/x-icon"
     />
-    <meta
-      name="description"
-      content="ZL Asica的小站，分享各种技术知识与个人的技术记录。个人技术记录及小技巧分享、生活小分享、小知识，喜欢的话欢迎点进来康康(*≧∪≦)"
-    />
-    <meta
-      property="og:type"
-      content="website"
-    />
-    <meta
-      property="og:title"
-      content="ZL Asica的博客"
-    />
-    <meta
-      property="og:url"
-      content="https://www.zl-asica.com/index.html"
-    />
-    <meta
-      property="og:site_name"
-      content="ZL Asica的博客"
-    />
-    <meta
-      property="og:description"
-      content="ZL Asica的小站，分享各种技术知识与个人的技术记录。个人技术记录及小技巧分享、生活小分享、小知识，喜欢的话欢迎点进来康康(*≧∪≦)"
-    />
-    <meta
-      property="og:locale"
-      content="zh_CN"
-    />
-    <meta
-      property="article:author"
-      content="ZL Asica"
-    />
-    <meta
-      property="article:tag"
-      content="iOS, Mac, Android, Windows, Web, Java, Python, blog, ZL Asica, ZLA, Deep Learning, Machine Learning, DL, ML, Artificial Intelligence, AI"
-    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/zl-asica/web-cdn/js/zlasica.js"
+    ></script>
     <style>
+      /* 全局样式 */
       * {
         margin: 0;
         padding: 0;
-        outline: none;
-        font-family: \5FAE\8F6F\96C5\9ED1, 宋体;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        -khtml-user-select: none;
-        user-select: none;
-        cursor: default;
-        font-weight: lighter;
+        box-sizing: border-box;
+        font-family: 'Microsoft YaHei', Arial, sans-serif;
       }
-      .center {
-        margin: 0 auto;
-      }
-      .whole {
-        width: 100%;
-        height: 100%;
-        line-height: 100%;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        z-index: -1000;
-        overflow: hidden;
-      }
-      .whole img {
-        width: 100%;
-        height: 100%;
-      }
-      .mask {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: #000;
-        opacity: 0.6;
-        filter: alpha(opacity=60);
-      }
-      .b {
-        width: 100%;
-        text-align: center;
-        height: 400px;
-        position: absolute;
-        top: 50%;
-        margin-top: -500px;
-      }
-      .a {
-        width: 150px;
-        height: 50px;
-        margin-top: 30px;
-      }
-      .a a {
-        display: block;
-        float: left;
-        width: 150px;
-        height: 50px;
-        background: #fff;
-        text-align: center;
-        line-height: 50px;
-        font-size: 18px;
-        border-radius: 25px;
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #f9f9f9, #eaeaea);
         color: #333;
+        text-align: center;
+        line-height: 1.6;
+        transition:
+          background 0.3s,
+          color 0.3s;
       }
-      .a a:hover {
-        color: #000;
-        box-shadow: #fff 0 0 20px;
+
+      h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #ff7597;
       }
+
       p {
-        color: #fff;
-        margin-top: 40px;
-        font-size: 24px;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
       }
-      #num {
-        margin: 0 5px;
+
+      a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        color: white;
+        background: linear-gradient(135deg, #ff7597, #ff93a8);
+        border-radius: 8px;
+        text-decoration: none;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+      }
+
+      a:hover {
+        background: linear-gradient(135deg, #ff93a8, #ff7597);
+        transform: translateY(-2px);
+      }
+
+      .timer {
         font-weight: bold;
+        color: #ff7597;
+      }
+
+      /* 暗色模式适配 */
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: linear-gradient(135deg, #2b2b2b, #1f1f1f);
+          color: #f2d3dc;
+        }
+
+        a {
+          background: linear-gradient(135deg, #d47a92, #c26582);
+          color: #f2d3dc;
+        }
+
+        a:hover {
+          background: linear-gradient(135deg, #c26582, #d47a92);
+        }
+
+        .timer {
+          color: #d47a92;
+        }
       }
     </style>
-    <script type="text/javascript">
-      var num = 4;
-      function redirect() {
-        num--;
-        document.getElementById('num').innerHTML = num;
-        if (num < 0) {
-          document.getElementById('num').innerHTML = 0;
-          location.href = 'https://www.zl-asica.com';
-        }
-      }
-      setInterval('redirect()', 1000);
-    </script>
-    <link
-      rel="alternate"
-      href="/atom.xml"
-      title="ZL Asica的博客"
-      type="application/atom+xml"
-    />
   </head>
-  <body onload="redirect();">
-    <div class="whole">
-      <div class="mask"></div>
-    </div>
-    <div class="b">
+  <body>
+    <main>
+      <h1>404 - (；′⌒`) 页面迷路啦~</h1>
       <p>
-        未能找到您要查找的页面<br />
-        可能您输入的网址有误或此页面不存在<br />
-        <span id="num"></span>秒后自动跳转回到我的博客首页
+        抱歉，您要找的页面已经不见了，或者它从未存在过 🔍<br />
+        <span
+          id="timer"
+          class="timer"
+          >10</span
+        >
+        秒后将自动跳转到首页。
       </p>
-      <img
-        src="https://fp1.fghrsh.net/2019/11/14/dd6e4de8c7e2204e9a99396995f9aabe.jpg!q80.jpeg"
-        class="center"
-      />
-    </div>
+      <a
+        href="/"
+        id="redirect-link"
+        >立即跳转</a
+      >
+    </main>
     <script>
-      console.clear();
-      console.log(
-        '%c由ZL Asica制作搭建与运行',
-        'background:#fff;color:#000000'
-      );
-      console.log(getCurrentDate());
+      // 跳转设置
+      const redirectURL = '/'; // 默认跳转到网站首页
+      const countdownTime = 10; // 倒计时 10 秒
 
-      function getCurrentDate() {
-        var date = new Date();
-        var seperator1 = '-';
-        var seperator2 = ':';
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        var seconds = date.getSeconds();
-        var month = date.getMonth() + 1;
-        var strDate = date.getDate();
-        if (month >= 1 && month <= 9) {
-          month = '0' + month;
+      let timer = countdownTime;
+
+      const timerElement = document.getElementById('timer');
+      const redirectLink = document.getElementById('redirect-link');
+
+      redirectLink.href = redirectURL;
+
+      const interval = setInterval(() => {
+        timer -= 1;
+        timerElement.textContent = timer;
+
+        if (timer <= 0) {
+          clearInterval(interval);
+          window.location.href = redirectURL;
         }
-        if (strDate >= 0 && strDate <= 9) {
-          strDate = '0' + strDate;
-        }
-        if (hours >= 0 && hours <= 9) {
-          hours = '0' + hours;
-        }
-        if (minutes >= 0 && minutes <= 9) {
-          minutes = '0' + minutes;
-        }
-        if (seconds >= 0 && seconds <= 9) {
-          seconds = '0' + seconds;
-        }
-        var currentdate =
-          date.getFullYear() +
-          seperator1 +
-          month +
-          seperator1 +
-          strDate +
-          ' ' +
-          hours +
-          seperator2 +
-          minutes +
-          seperator2 +
-          seconds;
-        return currentdate;
-      }
+      }, 1000);
     </script>
   </body>
 </html>

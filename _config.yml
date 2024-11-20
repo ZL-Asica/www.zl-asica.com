@@ -109,7 +109,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-  icon: https://s2.loli.net/2023/11/19/bU256ATetJuqFI4.jpg
+  icon: https://cdn.v2ex.com/gravatar/cba8b28739dd6225f6fe961762bdb0b71b858d68c83d946a37cee3b0e0daece5?size=512
   autodiscovery: true
   template:
 

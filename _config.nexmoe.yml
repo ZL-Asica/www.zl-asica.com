@@ -129,7 +129,7 @@ widgets:
           img: https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png
           link: https://nexmoe.com/
 
-copyTip: "著作权归ZL Asica所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
+copyTip: "著作权归 ZL Asica 所有。\n商业转载请联系作者获得授权，非商业转载请注明出处。\n来源：%url" # 自定义复制版权文案,使用 %url 代替当前页面URL, 修改为false禁用
 
 slotHead: |
   <!-- Google tag (gtag.js) -->
@@ -143,7 +143,6 @@ slotHead: |
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208452553759319"
      crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/gh/zl-asica/web-cdn/js/zlasica.js"></script>
 
 slotFooter: |
 

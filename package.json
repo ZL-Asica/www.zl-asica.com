@@ -7,8 +7,9 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
+    "dev": "hexo clean && hexo generate && hexo server --open",
     "prettier-check": "prettier --check .",
-    "prettier-write": "prettier --write .",
+    "format": "prettier --write .",
     "prepare": "husky"
   },
   "hexo": {
@@ -36,15 +37,15 @@
     "hexo-theme-nexmoe": "^4.2.2"
   },
   "devDependencies": {
-    "husky": "^9.1.6",
+    "@zl-asica/prettier-config": "^1.0.7",
+    "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "@zl-asica/prettier-config": "^1.0.7"
+    "prettier": "^3.3.3"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,vue,css,md}": [
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@9.13.2"
+  "packageManager": "pnpm@9.14.1"
 }
