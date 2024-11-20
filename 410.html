@@ -2,20 +2,33 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>410 - (´･_･) 页面不在啦~`</title>
     <!-- Robots Meta -->
-    <meta name="robots" content="nofollow, noarchive" />
+    <meta
+      name="robots"
+      content="nofollow, noarchive"
+    />
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zl-asica/web-cdn/js/zlasica.js"></script>
+    <link
+      rel="icon"
+      href="/favicon.ico"
+      type="image/x-icon"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/zl-asica/web-cdn/js/zlasica.js"
+    ></script>
     <style>
       /* 全局样式 */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: "Microsoft YaHei", Arial, sans-serif;
+        font-family: 'Microsoft YaHei', Arial, sans-serif;
       }
 
       body {
@@ -28,7 +41,9 @@
         color: #333;
         text-align: center;
         line-height: 1.6;
-        transition: background 0.3s, color 0.3s;
+        transition:
+          background 0.3s,
+          color 0.3s;
       }
 
       h1 {
@@ -50,7 +65,9 @@
         background: linear-gradient(135deg, #ff7597, #ff93a8);
         border-radius: 8px;
         text-decoration: none;
-        transition: background 0.3s, transform 0.2s;
+        transition:
+          background 0.3s,
+          transform 0.2s;
       }
 
       a:hover {
@@ -90,19 +107,28 @@
       <h1>410 - (´･_･) 页面已删除`</h1>
       <p>
         抱歉，您要找的页面已经被永久移除了 🗑️<br />
-        <span id="timer" class="timer">10</span> 秒后将自动跳转到首页。
+        <span
+          id="timer"
+          class="timer"
+          >10</span
+        >
+        秒后将自动跳转到首页。
       </p>
-      <a href="/" id="redirect-link">立即跳转</a>
+      <a
+        href="/"
+        id="redirect-link"
+        >立即跳转</a
+      >
     </main>
     <script>
       // 跳转设置
-      const redirectURL = "/"; // 默认跳转到网站首页
+      const redirectURL = '/'; // 默认跳转到网站首页
       const countdownTime = 10; // 倒计时 10 秒
 
       let timer = countdownTime;
 
-      const timerElement = document.getElementById("timer");
-      const redirectLink = document.getElementById("redirect-link");
+      const timerElement = document.getElementById('timer');
+      const redirectLink = document.getElementById('redirect-link');
 
       redirectLink.href = redirectURL;
 
