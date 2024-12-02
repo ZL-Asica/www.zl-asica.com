@@ -67,8 +67,8 @@ importers:
         version: 4.2.2(chokidar@3.6.0)
     devDependencies:
       '@zl-asica/prettier-config':
-        specifier: ^1.0.7
-        version: 1.0.7(prettier@3.3.3)
+        specifier: ^1.0.9
+        version: 1.0.9(prettier@3.4.1)
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -76,8 +76,8 @@ importers:
         specifier: ^15.2.10
         version: 15.2.10
       prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
+        specifier: ^3.4.1
+        version: 3.4.1
 
 packages:
 
@@ -615,8 +615,8 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
 
-  '@zl-asica/prettier-config@1.0.7':
-    resolution: {integrity: sha512-t6MZ975LLN3FplXf6TXdHbDioYlsaOLXbDVpPp1lGjzlT7humbsXIA56IbccTNdRkuIxXMWR+SAadMQS4UIKzQ==}
+  '@zl-asica/prettier-config@1.0.9':
+    resolution: {integrity: sha512-ZKo+3D6OEscq1Axd3DAMIZX3jCj7KGmiYWdD6pvtkn5u7ljhtnc94T8RCY8pOM34XxPv9O7KoT1LGSzUZR1p8Q==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -1772,8 +1772,8 @@ packages:
     resolution: {integrity: sha512-/E57AYkoeQ25qkxMj5PBOVgF8Kiu/h7cYS30Z5+R7WaiCCBfLq58ZI/dSeaEKb9WVJV5n/03QwrN3IeWIFllvw==}
     engines: {node: '>=6'}
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.4.1:
+    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2889,9 +2889,9 @@ snapshots:
 
   '@tootallnate/once@2.0.0': {}
 
-  '@zl-asica/prettier-config@1.0.7(prettier@3.3.3)':
+  '@zl-asica/prettier-config@1.0.9(prettier@3.4.1)':
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.4.1
 
   a-sync-waterfall@1.0.1: {}
 
@@ -4147,7 +4147,7 @@ snapshots:
     dependencies:
       find-up: 3.0.0
 
-  prettier@3.3.3: {}
+  prettier@3.4.1: {}
 
   pretty-hrtime@1.0.3: {}
 

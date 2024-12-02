@@ -12,7 +12,7 @@ on:
       - '_config.yml'
       - '_config.*.yml'
       - 'package.json'
-      - 'package-lock.json'
+      - 'pnpm-lock.yaml'
   push:
     branches:
       - master
@@ -24,7 +24,7 @@ on:
       - '_config.yml'
       - '_config.*.yml'
       - 'package.json'
-      - 'package-lock.json'
+      - 'pnpm-lock.yaml'
 
 permissions:
   contents: write
@@ -36,10 +36,32 @@ jobs:
       - name: 🛎️ Checkout
         uses: actions/checkout@v4
 
-      - name: 🛠️ Install dependencies with pnpm
+      - name: 🛠️ Install  pnpm
         uses: pnpm/action-setup@v4
         with:
-          run_install: true
+          run_install: false
+
+      - name: 🛠️ Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: 🗂️ Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: ⚡ Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 📂 Install dependencies
+        run: pnpm install
 
       - name: 🏗️ Build
         run: pnpm run build
@@ -55,7 +77,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          # 删除gh-pages分支的现有文件
           keep_files: false
-          # 指定发布到gh-pages分支
           publish_branch: gh-pages
