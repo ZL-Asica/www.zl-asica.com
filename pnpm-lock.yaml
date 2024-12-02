@@ -67,8 +67,8 @@ importers:
         version: 4.2.2(chokidar@3.6.0)
     devDependencies:
       '@zl-asica/prettier-config':
-        specifier: ^1.0.7
-        version: 1.0.7(prettier@3.4.1)
+        specifier: ^1.0.9
+        version: 1.0.9(prettier@3.4.1)
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -615,8 +615,8 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
 
-  '@zl-asica/prettier-config@1.0.7':
-    resolution: {integrity: sha512-t6MZ975LLN3FplXf6TXdHbDioYlsaOLXbDVpPp1lGjzlT7humbsXIA56IbccTNdRkuIxXMWR+SAadMQS4UIKzQ==}
+  '@zl-asica/prettier-config@1.0.9':
+    resolution: {integrity: sha512-ZKo+3D6OEscq1Axd3DAMIZX3jCj7KGmiYWdD6pvtkn5u7ljhtnc94T8RCY8pOM34XxPv9O7KoT1LGSzUZR1p8Q==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -2889,7 +2889,7 @@ snapshots:
 
   '@tootallnate/once@2.0.0': {}
 
-  '@zl-asica/prettier-config@1.0.7(prettier@3.4.1)':
+  '@zl-asica/prettier-config@1.0.9(prettier@3.4.1)':
     dependencies:
       prettier: 3.4.1
 

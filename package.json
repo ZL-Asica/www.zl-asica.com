@@ -37,7 +37,7 @@
     "hexo-theme-nexmoe": "^4.2.2"
   },
   "devDependencies": {
-    "@zl-asica/prettier-config": "^1.0.7",
+    "@zl-asica/prettier-config": "^1.0.9",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "prettier": "^3.4.1"
