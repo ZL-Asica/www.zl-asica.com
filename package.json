@@ -18,7 +18,6 @@
   "dependencies": {
     "hexo": "^7.3.0",
     "hexo-clean-css": "^2.0.0",
-    "hexo-deployer-git": "^4.0.0",
     "hexo-filter-nofollow": "^2.0.2",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -40,12 +39,12 @@
     "@zl-asica/prettier-config": "^1.0.9",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.4.1"
+    "prettier": "^3.4.2"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,vue,css,md}": [
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@9.14.4"
+  "packageManager": "pnpm@9.15.0"
 }

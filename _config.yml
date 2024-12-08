@@ -134,8 +134,3 @@ nofollow:
     - 'www.acfox.cc'
     - 'zla.pub'
     - 'zla.app'
-
-deploy:
-  type: git
-  repo: https://github.com/ZL-Asica/zl-asica.github.io
-  branch: master
