@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<meta name="description" content="在一些场景下，我们需要生成具有可读性的短 ID，并且这些 ID 基于用户的特定信息，例如用户 UID 和额外的上下文数据。这种方式的 ID 比 UUID 更加直观，可读性更强，特别适用于以下场景：  用户上传的资源（例如 CDN 链接或图床图片）。 客户端生成链接或标识符以便用户快速辨认。 简化的短 ID 能够提升用户体验和业务逻辑可维护性。  比如我目前在进行开发的 MomoPix 私家图床项目">
+<meta name="description" content="在一些场景下，我们需要生成具有可读性的短 ID，并且这些 ID 基于用户的特定信息，例如用户 UID 和额外的上下文数据。这种方式的 ID 比 UUID 更加直观，可读性更强，特别适用于以下场景：  用户上传的资源（例如 CDN 链接或图床图片）。 客户端生成链接或标识符以便用户快速辨认。 简化的短 ID 能够提升用户体验和业务逻辑可维护性。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于特定信息的短 ID 生成实现">
 <meta property="og:url" content="https://www.zl-asica.com/2024/short-id-generator/index.html">
 <meta property="og:site_name" content="ZL Asica的博客">
-<meta property="og:description" content="在一些场景下，我们需要生成具有可读性的短 ID，并且这些 ID 基于用户的特定信息，例如用户 UID 和额外的上下文数据。这种方式的 ID 比 UUID 更加直观，可读性更强，特别适用于以下场景：  用户上传的资源（例如 CDN 链接或图床图片）。 客户端生成链接或标识符以便用户快速辨认。 简化的短 ID 能够提升用户体验和业务逻辑可维护性。  比如我目前在进行开发的 MomoPix 私家图床项目">
+<meta property="og:description" content="在一些场景下，我们需要生成具有可读性的短 ID，并且这些 ID 基于用户的特定信息，例如用户 UID 和额外的上下文数据。这种方式的 ID 比 UUID 更加直观，可读性更强，特别适用于以下场景：  用户上传的资源（例如 CDN 链接或图床图片）。 客户端生成链接或标识符以便用户快速辨认。 简化的短 ID 能够提升用户体验和业务逻辑可维护性。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://r2.img.zla.app/2024/12/12/f8cf60.webp">
 <meta property="article:published_time" content="2024-12-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-12T03:57:36.593Z">
+<meta property="article:modified_time" content="2024-12-12T04:00:06.343Z">
 <meta property="article:author" content="ZL Asica">
 <meta property="article:tag" content="frontend">
 <meta name="twitter:card" content="summary">
@@ -25,15 +25,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1733975869054">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1733976015836">
 
-<link rel="stylesheet" href="/css/style.css?v=1733975869054">
+<link rel="stylesheet" href="/css/style.css?v=1733976015836">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1733975869054">
+        <link rel="stylesheet" href="/custom.css?v=1733976015836">
     
 
 
@@ -43,7 +43,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1733975869054"></script>
+<script async src="/js/app.js?v=1733976015836"></script>
 
  
 
@@ -339,6 +339,8 @@
 <li>客户端生成链接或标识符以便用户快速辨认。</li>
 <li>简化的短 ID 能够提升用户体验和业务逻辑可维护性。</li>
 </ul>
+<span id="more"></span>
+
 <p>比如我目前在进行开发的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ZL-Asica/MomoPix">MomoPix</a> 私家图床项目，就是使用了这里的这种算法，对用户的图片上传链接进行生成（实际上是我在生成链接的时候看到了 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://sm.ms/">sm.ms</a> 图床的链接都非常短，还能承受这么大的流量，所以我就想着自己也能不能实现一个这样的短网址生成算法）。</p>
 <h2 id="实现逻辑"><a href="#实现逻辑" class="headerlink" title="实现逻辑"></a>实现逻辑</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
 <li><strong>基于用户特定信息</strong>：结合用户 UID 和额外的上下文数据生成短 ID（能够保证 ID 的唯一性，且包含用户信息）。</li>
@@ -359,14 +361,14 @@
 <li><strong>普遍支持</strong>：SHA-256 是加密领域的标准算法，浏览器和服务器端均原生支持。</li>
 <li><strong>效率高</strong>：在短时间内可以处理大量数据，非常适合高并发场景。</li>
 </ol>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="1-定义输入类型校验"><a href="#1-定义输入类型校验" class="headerlink" title="1. 定义输入类型校验"></a><strong>1. 定义输入类型校验</strong></h3><p>通过 <code>Zod</code> 定义输入结构，确保输入数据合法。</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="定义输入类型校验"><a href="#定义输入类型校验" class="headerlink" title="定义输入类型校验"></a>定义输入类型校验</h3><p>通过 <code>Zod</code> 定义输入结构，确保输入数据合法。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; z &#125; <span class="keyword">from</span> <span class="string">&#x27;zod&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输入数据的类型约束</span></span><br><span class="line"><span class="keyword">const</span> idSchema = z.<span class="title function_">object</span>(&#123;</span><br><span class="line">  <span class="attr">inputValues</span>: z.<span class="title function_">array</span>(z.<span class="title function_">string</span>().<span class="title function_">min</span>(<span class="number">1</span>, <span class="string">&#x27;Strings cannot be empty&#x27;</span>)),</span><br><span class="line">  <span class="attr">randomBias</span>: z.<span class="title function_">string</span>().<span class="title function_">optional</span>(),</span><br><span class="line">  <span class="attr">length</span>: z.<span class="title function_">number</span>().<span class="title function_">int</span>().<span class="title function_">min</span>(<span class="number">1</span>).<span class="title function_">default</span>(<span class="number">6</span>),</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">IdInput</span> = z.<span class="property">infer</span>&lt;<span class="keyword">typeof</span> idSchema&gt;;</span><br></pre></td></tr></table></figure>
 
 <p>我们需要获取的是一个计算时所基于的数据，也就是 <code>inputValues</code>，这个数据可以是 <code>UID</code> 和当前要上传的文件名所组成的一个 <code>array</code> 数组，也可以是一些其他的有一定唯一性的数据。<code>randomBias</code> 是一个可选的随机偏置字符串，用于增加哈希的随机性，防止同一个用户在同一时间戳上传多个文件时生成相同的 ID（虽然一般不大可能这样，但是还是要考虑到这种情况）。<code>length</code> 是生成的 ID 的长度，这个长度可以根据实际情况进行调整。</p>
-<h3 id="2-核心逻辑实现"><a href="#2-核心逻辑实现" class="headerlink" title="2. 核心逻辑实现"></a><strong>2. 核心逻辑实现</strong></h3><p>以下是核心算法，用于生成基于用户输入的短 ID，同时提供回退机制以适应不同环境。</p>
+<h3 id="核心逻辑实现"><a href="#核心逻辑实现" class="headerlink" title="核心逻辑实现"></a>核心逻辑实现</h3><p>以下是核心算法，用于生成基于用户输入的短 ID，同时提供回退机制以适应不同环境。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string[]</span>&#125; <span class="variable">inputValues</span> - 用户提供的输入数组，例如 UID 或上下文数据。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; [randomBias] - 可选的随机偏置字符串，默认使用随机数。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; [length=6] - 生成的短 ID 长度。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;string&gt;</span>&#125; - 返回生成的短 ID。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> generateUniqueId = <span class="title function_">async</span> (</span><br><span class="line">  <span class="attr">inputValues</span>: <span class="built_in">string</span>[],</span><br><span class="line">  <span class="attr">randomBias</span>: <span class="built_in">string</span> = <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>(<span class="number">36</span>).<span class="title function_">substring</span>(<span class="number">2</span>),</span><br><span class="line">  <span class="attr">length</span>: <span class="built_in">number</span> = <span class="number">6</span></span><br><span class="line">): <span class="title class_">Promise</span>&lt;<span class="built_in">string</span>&gt; =&gt; &#123;</span><br><span class="line">  idSchema.<span class="title function_">parse</span>(&#123; inputValues, randomBias, length &#125;); <span class="comment">// 校验输入数据</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> encoder = <span class="keyword">new</span> <span class="title class_">TextEncoder</span>(); <span class="comment">// 创建文本编码器</span></span><br><span class="line">  <span class="keyword">const</span> uniqueId = encoder.<span class="title function_">encode</span>(</span><br><span class="line">    inputValues.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) + <span class="title class_">Date</span>.<span class="title function_">now</span>() + randomBias</span><br><span class="line">  ); <span class="comment">// 合并输入数据，并添加当前时间戳和预定义的随机偏置</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 防止不支持（IE 11 都支持我想不到还有什么不支持的）</span></span><br><span class="line">  <span class="keyword">if</span> (crypto?.<span class="property">subtle</span>?.<span class="property">digest</span>) &#123;</span><br><span class="line">    <span class="comment">// 进行 SHA-256 哈希计算，返回 ArrayBuffer</span></span><br><span class="line">    <span class="keyword">const</span> hashBuffer = <span class="keyword">await</span> crypto.<span class="property">subtle</span>.<span class="title function_">digest</span>(<span class="string">&#x27;SHA-256&#x27;</span>, uniqueId);</span><br><span class="line">    <span class="comment">// 将 ArrayBuffer 转换为 Uint8Array</span></span><br><span class="line">    <span class="keyword">const</span> hashArray = [...<span class="keyword">new</span> <span class="title class_">Uint8Array</span>(hashBuffer)];</span><br><span class="line">    <span class="comment">// 将每个字节转换为 2 位十六进制字符串，并拼接为最终的哈希值</span></span><br><span class="line">    <span class="keyword">const</span> hash = hashArray.<span class="title function_">map</span>(<span class="function">(<span class="params">b</span>) =&gt;</span> b.<span class="title function_">toString</span>(<span class="number">16</span>).<span class="title function_">padStart</span>(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>)).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> hash.<span class="title function_">slice</span>(<span class="number">0</span>, length);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 基本不可用的一个回退方案，只能支持小并发的情况</span></span><br><span class="line">  <span class="keyword">const</span> fallbackSimple = <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>(<span class="number">36</span>) + <span class="title class_">Date</span>.<span class="title function_">now</span>().<span class="title function_">toString</span>(<span class="number">36</span>);</span><br><span class="line">  <span class="keyword">return</span> fallbackSimple.<span class="title function_">slice</span>(<span class="number">0</span>, length);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-使用示例"><a href="#3-使用示例" class="headerlink" title="3. 使用示例"></a><strong>3. 使用示例</strong></h3><p>以下是如何在项目中调用该函数的示例：</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>以下是如何在项目中调用该函数的示例：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; generateUniqueId &#125; <span class="keyword">from</span> <span class="string">&#x27;./shortIdGenerator&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> inputs = [<span class="string">&#x27;user123&#x27;</span>, <span class="string">&#x27;photo.png&#x27;</span>];</span><br><span class="line"><span class="comment">// 指定输出长度为 10</span></span><br><span class="line"><span class="keyword">const</span> id = <span class="keyword">await</span> <span class="title function_">generateUniqueId</span>(inputs, <span class="literal">undefined</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="并发冲突分析"><a href="#并发冲突分析" class="headerlink" title="并发冲突分析"></a>并发冲突分析</h2><p>在高并发环境中，使用该算法生成短 ID 时，冲突的可能性取决于以下因素：</p>
@@ -377,7 +379,7 @@
 </ol>
 <p>假设输入的 <code>inputValues</code> 是一样的，比如同一个用户同一文件名的图片，那么我们就计算一下在这种情况下我们如果选择 6 位长度，能够承受的并发。</p>
 <p>以下是目标冲突概率为 $0.1%$ 时，能够承受的最大并发数 $k$ 的证明过程：</p>
-<h3 id="1-问题定义"><a href="#1-问题定义" class="headerlink" title="1. 问题定义"></a>1. 问题定义</h3><p>我们使用生日悖论公式计算冲突概率：</p>
+<h3 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h3><p>我们使用生日悖论公式计算冲突概率：</p>
 <p>$$<br>P(\text{冲突}) &#x3D; 1 - \exp\left(-\frac{k(k-1)}{2N}\right)<br>$$</p>
 <p>其中：</p>
 <ul>
@@ -385,7 +387,7 @@
 <li>$k$：每天生成的ID数量。</li>
 <li>我们希望 $P(\text{冲突}) \leq 0.001$（目标冲突概率为0.1%）。</li>
 </ul>
-<h3 id="2-化简公式"><a href="#2-化简公式" class="headerlink" title="2. 化简公式"></a>2. 化简公式</h3><p>设 $P(\text{冲突}) &#x3D; 0.001$，则：</p>
+<h3 id="化简公式"><a href="#化简公式" class="headerlink" title="化简公式"></a>化简公式</h3><p>设 $P(\text{冲突}) &#x3D; 0.001$，则：</p>
 <p>$$<br>0.001 &#x3D; 1 - \exp\left(-\frac{k(k-1)}{2N}\right)<br>$$</p>
 <p>化简为：</p>
 <p>$$<br>\exp\left(-\frac{k(k-1)}{2N}\right) &#x3D; 0.999<br>$$</p>
@@ -396,7 +398,7 @@
 <p>$$<br>C &#x3D; -\ln(0.999) \approx 0.0010005003<br>$$</p>
 <p>因此：</p>
 <p>$$<br>k(k-1) &#x3D; 2N \cdot C<br>$$</p>
-<h3 id="3-求解-k"><a href="#3-求解-k" class="headerlink" title="3. 求解 $k$"></a>3. 求解 $k$</h3><p>将 $N &#x3D; 56800235584$ 和 $C &#x3D; 0.0010005003$ 代入：</p>
+<h3 id="求解-k"><a href="#求解-k" class="headerlink" title="求解 k"></a>求解 k</h3><p>将 $N &#x3D; 56800235584$ 和 $C &#x3D; 0.0010005003$ 代入：</p>
 <p>$$<br>k(k-1) &#x3D; 2 \cdot 56800235584 \cdot 0.0010005003<br>$$</p>
 <p>$$<br>k(k-1) \approx 113744206.03<br>$$</p>
 <p>设 $k \approx x$，近似解得：</p>
@@ -409,7 +411,7 @@
 <p>$$<br>x &#x3D; \frac{1 \pm 21342.04}{2}<br>$$</p>
 <p>取正值：</p>
 <p>$$<br>x \approx \frac{1 + 21342.04}{2} \approx 10661.52<br>$$</p>
-<h3 id="4-结论"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论</h3><p>每天生成的最大ID数量 $k$ 为：</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>每天生成的最大ID数量 $k$ 为：</p>
 <p>$$<br>k \approx 10661<br>$$</p>
 <p>在这个条件下，冲突概率满足目标 $P(\text{冲突}) \leq 0.001$。</p>
 <ul>
@@ -463,7 +465,7 @@
 </div>
   
   
-    <script async src="/js/copy-codeblock.js?v=1733975869008"></script>
+    <script async src="/js/copy-codeblock.js?v=1733976015789"></script>
   
 
   
@@ -500,7 +502,7 @@
             <button class="mdui-fab catalog" style="overflow:unset;">
                 <i class="nexmoefont icon-i-catalog"></i>
                 <div class="nexmoe-toc">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">实现逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Crypto-API-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">Web Crypto API 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-SHA-256%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">为什么选择 SHA-256？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E8%BE%93%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%A0%A1%E9%AA%8C"><span class="toc-number">2.1.</span> <span class="toc-text">1. 定义输入类型校验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.2.</span> <span class="toc-text">2. 核心逻辑实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">3. 使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%86%B2%E7%AA%81%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">并发冲突分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.</span> <span class="toc-text">1. 问题定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8C%96%E7%AE%80%E5%85%AC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">2. 化简公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B1%82%E8%A7%A3-k"><span class="toc-number">3.3.</span> <span class="toc-text">3. 求解 $k$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%93%E8%AE%BA"><span class="toc-number">3.4.</span> <span class="toc-text">4. 结论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9B%B4%E4%BC%98%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">为什么这种方式更优？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%AF%94-UUID-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">4.1.</span> <span class="toc-text">相比 UUID 的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">4.2.</span> <span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">实现逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Crypto-API-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">Web Crypto API 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-SHA-256%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">为什么选择 SHA-256？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E8%BE%93%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%A0%A1%E9%AA%8C"><span class="toc-number">2.1.</span> <span class="toc-text">定义输入类型校验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.2.</span> <span class="toc-text">核心逻辑实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%86%B2%E7%AA%81%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">并发冲突分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.</span> <span class="toc-text">问题定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%96%E7%AE%80%E5%85%AC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">化简公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3-k"><span class="toc-number">3.3.</span> <span class="toc-text">求解 k</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">3.4.</span> <span class="toc-text">结论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9B%B4%E4%BC%98%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">为什么这种方式更优？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%AF%94-UUID-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">4.1.</span> <span class="toc-text">相比 UUID 的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">4.2.</span> <span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
                 </div>
             </button>
             
