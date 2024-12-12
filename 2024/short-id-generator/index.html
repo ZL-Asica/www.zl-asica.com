@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>基于特定信息的短 ID 生成实现 - ZL Asica的博客</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="iOS, Mac, Android, Windows, Web, Java, Python, blog, ZL Asica, ZLA, Deep Learning, Machine Learning, DL, ML, Artificial Intelligence, AI">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="在一些场景下，我们需要生成具有可读性的短 ID，并且这些 ID 基于用户的特定信息，例如用户 UID 和额外的上下文数据。这种方式的 ID 比 UUID 更加直观，可读性更强，特别适用于以下场景：  用户上传的资源（例如 CDN 链接或图床图片）。 客户端生成链接或标识符以便用户快速辨认。 简化的短 ID 能够提升用户体验和业务逻辑可维护性。  比如我目前在进行开发的 MomoPix 私家图床项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于特定信息的短 ID 生成实现">
+<meta property="og:url" content="https://www.zl-asica.com/2024/short-id-generator/index.html">
+<meta property="og:site_name" content="ZL Asica的博客">
+<meta property="og:description" content="在一些场景下，我们需要生成具有可读性的短 ID，并且这些 ID 基于用户的特定信息，例如用户 UID 和额外的上下文数据。这种方式的 ID 比 UUID 更加直观，可读性更强，特别适用于以下场景：  用户上传的资源（例如 CDN 链接或图床图片）。 客户端生成链接或标识符以便用户快速辨认。 简化的短 ID 能够提升用户体验和业务逻辑可维护性。  比如我目前在进行开发的 MomoPix 私家图床项目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://r2.img.zla.app/2024/12/12/f8cf60.webp">
+<meta property="article:published_time" content="2024-12-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-12T03:57:36.593Z">
+<meta property="article:author" content="ZL Asica">
+<meta property="article:tag" content="frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://r2.img.zla.app/2024/12/12/f8cf60.webp">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1733975869054">
+
+<link rel="stylesheet" href="/css/style.css?v=1733975869054">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1733975869054">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1733975869054"></script>
+
+ 
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DS0SN4Y59S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DS0SN4Y59S');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4208452553759319"
+   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="ZL Asica的博客" type="application/atom+xml">
+</head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(/katomegumi.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="ZL Asica"><img src="https://cdn.v2ex.com/gravatar/cba8b28739dd6225f6fe961762bdb0b71b858d68c83d946a37cee3b0e0daece5?size=512" alt="ZL Asica"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="ZL Asica">
+            <img src="https://cdn.v2ex.com/gravatar/cba8b28739dd6225f6fe961762bdb0b71b858d68c83d946a37cee3b0e0daece5?size=512" alt="ZL Asica" alt="ZL Asica">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>17</div>
+        <div><span>标签</span>14</div>
+        <div><span>分类</span>5</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/friends.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/sponsors/ZL-Asica" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener external nofollow noreferrer" href="https://www.zla.pub" title="我的主力博客">
+            <i class="mdui-list-item-icon nexmoefont icon-ellipsis"></i>
+            <div class="mdui-list-item-content">
+                我的主力博客
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:zl-asica.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://t.me/zl_asica"
+			target="_blank"
+			mdui-tooltip="{content: 'Telegram'}"
+			style="
+				color: rgb(42, 171, 238);
+				background-color: rgba(42, 171, 238, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-telegram"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/29018759"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/ZL-Asica/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/zl-asica"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://twitter.com/ZL_Asica"
+			target="_blank"
+			mdui-tooltip="{content: 'Twitter'}"
+			style="
+				color: rgb(59, 151, 239);
+				background-color: rgba(59, 151, 239, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-twitter"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="mailto:zl@zla.moe"
+			target="_blank"
+			mdui-tooltip="{content: 'E-Mail'}"
+			style="
+				color: rgb(247, 56, 101);
+				background-color: rgba(247, 56, 101, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-mail-fill"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://weibo.com/5907278427"
+			target="_blank"
+			mdui-tooltip="{content: '微博'}"
+			style="
+				color: rgb(223, 32, 41);
+				background-color: rgba(223, 32, 41, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-weibo"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zl-asica.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+        
+        <!-- 一言 -->
+<div class="nexmoe-widget-wrap">
+  <h3 class="nexmoe-widget-title">
+    一言
+  </h3>
+  <div class="nexmoe-widget">
+    <ul class="hitokoto-box">
+      <li id="hitokoto_text_parent" class="hitokoto-text" hitokotoCategory="">
+        <a href="#" id="hitokoto_text">
+          
+        </a>
+        <a href="#" id="hitokoto_error_text" style="display: none;">
+          
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  let hitokotoText = document.getElementById('hitokoto_text')
+  let hitokotoErroText = document.getElementById('hitokoto_error_text')
+  let hitokotoCategory = document.getElementById('hitokoto_text_parent').getAttribute('hitokotoCategory')
+  window.addEventListener('load', function () {
+    let url = 'https://v1.hitokoto.cn'
+    if (hitokotoCategory) {
+      url += '?c=' + hitokotoCategory
+    }
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        hitokotoText.innerText = "「 " + data.hitokoto + " 」 from " + data.from
+        hitokotoText.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      })
+      .catch((reason) => {
+        console.error(11, reason)
+        hitokotoText.style.display = 'none'
+        hitokotoErroText.style.display = 'block'
+      })
+  })
+</script>
+    
+        
+        
+        
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 ZL Asica
+        Powered by <a href="http://hexo.io/" rel="external nofollow noreferrer" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" rel="external nofollow noreferrer" target="_blank">Nexmoe</a>
+        <br><p> Since 2017</p>
+<br>
+<a target="_blank" href="http://beian.miit.gov.cn/" rel="external nofollow noreferrer">鲁ICP备19057855号</a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="https://r2.img.zla.app/2024/12/12/7922b4.webp" alt="基于特定信息的短 ID 生成实现" loading="lazy">
+            <h1>基于特定信息的短 ID 生成实现</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年12月11日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <p>在一些场景下，我们需要生成具有可读性的短 ID，并且这些 ID 基于用户的特定信息，例如用户 UID 和额外的上下文数据。这种方式的 ID 比 UUID 更加直观，可读性更强，特别适用于以下场景：</p>
+<ul>
+<li>用户上传的资源（例如 CDN 链接或图床图片）。</li>
+<li>客户端生成链接或标识符以便用户快速辨认。</li>
+<li>简化的短 ID 能够提升用户体验和业务逻辑可维护性。</li>
+</ul>
+<p>比如我目前在进行开发的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ZL-Asica/MomoPix">MomoPix</a> 私家图床项目，就是使用了这里的这种算法，对用户的图片上传链接进行生成（实际上是我在生成链接的时候看到了 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://sm.ms/">sm.ms</a> 图床的链接都非常短，还能承受这么大的流量，所以我就想着自己也能不能实现一个这样的短网址生成算法）。</p>
+<h2 id="实现逻辑"><a href="#实现逻辑" class="headerlink" title="实现逻辑"></a>实现逻辑</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+<li><strong>基于用户特定信息</strong>：结合用户 UID 和额外的上下文数据生成短 ID（能够保证 ID 的唯一性，且包含用户信息）。</li>
+<li><strong>长度可控</strong>：支持自定义生成 ID 的长度（因为可能这次 6 位够用，但下次 6 位能够承受的流量就不够了）。</li>
+<li><strong>高效</strong>：适用于客户端高并发环境。</li>
+</ul>
+<p>我一开始想到的是使用 <code>SHA-256</code> 进行哈希，然后再结合当前时间戳进行生成，这样可以保证 ID 的唯一性，同时也能够保证 ID 的可读性。于是，我就想到了使用 <code>Web Crypto API</code> 来进行实现。</p>
+<h3 id="Web-Crypto-API-简介"><a href="#Web-Crypto-API-简介" class="headerlink" title="Web Crypto API 简介"></a>Web Crypto API 简介</h3><p><code>Web Crypto API</code> 是现代浏览器中内置的加密接口，支持高效、安全的加密操作，包括哈希、签名和密钥生成。它的主要特点包括：</p>
+<ol>
+<li><strong>性能高效</strong>：直接在底层硬件或操作系统中实现加密算法，速度远高于 JavaScript 实现。</li>
+<li><strong>安全性强</strong>：避免了 JavaScript 中可能导致安全问题的实现错误。</li>
+<li><strong>跨平台支持</strong>：几乎所有现代浏览器和 Node.js 环境均支持（IE 11 都支持呢！）。</li>
+</ol>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://r2.img.zla.app/2024/12/12/f8cf60.webp" alt="Can I Use" data-caption="Can I Use" loading="lazy"></p>
+<p>在我实现的的这一个短 ID 生成中，我们使用了 <code>crypto.subtle.digest</code> 方法来计算输入数据的 SHA-256 哈希值。</p>
+<h3 id="为什么选择-SHA-256？"><a href="#为什么选择-SHA-256？" class="headerlink" title="为什么选择 SHA-256？"></a>为什么选择 SHA-256？</h3><ol>
+<li><strong>抗碰撞性</strong>：即使输入数据略有不同，生成的哈希值也会完全不同，极大减少冲突可能性。</li>
+<li><strong>普遍支持</strong>：SHA-256 是加密领域的标准算法，浏览器和服务器端均原生支持。</li>
+<li><strong>效率高</strong>：在短时间内可以处理大量数据，非常适合高并发场景。</li>
+</ol>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="1-定义输入类型校验"><a href="#1-定义输入类型校验" class="headerlink" title="1. 定义输入类型校验"></a><strong>1. 定义输入类型校验</strong></h3><p>通过 <code>Zod</code> 定义输入结构，确保输入数据合法。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; z &#125; <span class="keyword">from</span> <span class="string">&#x27;zod&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输入数据的类型约束</span></span><br><span class="line"><span class="keyword">const</span> idSchema = z.<span class="title function_">object</span>(&#123;</span><br><span class="line">  <span class="attr">inputValues</span>: z.<span class="title function_">array</span>(z.<span class="title function_">string</span>().<span class="title function_">min</span>(<span class="number">1</span>, <span class="string">&#x27;Strings cannot be empty&#x27;</span>)),</span><br><span class="line">  <span class="attr">randomBias</span>: z.<span class="title function_">string</span>().<span class="title function_">optional</span>(),</span><br><span class="line">  <span class="attr">length</span>: z.<span class="title function_">number</span>().<span class="title function_">int</span>().<span class="title function_">min</span>(<span class="number">1</span>).<span class="title function_">default</span>(<span class="number">6</span>),</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">IdInput</span> = z.<span class="property">infer</span>&lt;<span class="keyword">typeof</span> idSchema&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>我们需要获取的是一个计算时所基于的数据，也就是 <code>inputValues</code>，这个数据可以是 <code>UID</code> 和当前要上传的文件名所组成的一个 <code>array</code> 数组，也可以是一些其他的有一定唯一性的数据。<code>randomBias</code> 是一个可选的随机偏置字符串，用于增加哈希的随机性，防止同一个用户在同一时间戳上传多个文件时生成相同的 ID（虽然一般不大可能这样，但是还是要考虑到这种情况）。<code>length</code> 是生成的 ID 的长度，这个长度可以根据实际情况进行调整。</p>
+<h3 id="2-核心逻辑实现"><a href="#2-核心逻辑实现" class="headerlink" title="2. 核心逻辑实现"></a><strong>2. 核心逻辑实现</strong></h3><p>以下是核心算法，用于生成基于用户输入的短 ID，同时提供回退机制以适应不同环境。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string[]</span>&#125; <span class="variable">inputValues</span> - 用户提供的输入数组，例如 UID 或上下文数据。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; [randomBias] - 可选的随机偏置字符串，默认使用随机数。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; [length=6] - 生成的短 ID 长度。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise&lt;string&gt;</span>&#125; - 返回生成的短 ID。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> generateUniqueId = <span class="title function_">async</span> (</span><br><span class="line">  <span class="attr">inputValues</span>: <span class="built_in">string</span>[],</span><br><span class="line">  <span class="attr">randomBias</span>: <span class="built_in">string</span> = <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>(<span class="number">36</span>).<span class="title function_">substring</span>(<span class="number">2</span>),</span><br><span class="line">  <span class="attr">length</span>: <span class="built_in">number</span> = <span class="number">6</span></span><br><span class="line">): <span class="title class_">Promise</span>&lt;<span class="built_in">string</span>&gt; =&gt; &#123;</span><br><span class="line">  idSchema.<span class="title function_">parse</span>(&#123; inputValues, randomBias, length &#125;); <span class="comment">// 校验输入数据</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> encoder = <span class="keyword">new</span> <span class="title class_">TextEncoder</span>(); <span class="comment">// 创建文本编码器</span></span><br><span class="line">  <span class="keyword">const</span> uniqueId = encoder.<span class="title function_">encode</span>(</span><br><span class="line">    inputValues.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) + <span class="title class_">Date</span>.<span class="title function_">now</span>() + randomBias</span><br><span class="line">  ); <span class="comment">// 合并输入数据，并添加当前时间戳和预定义的随机偏置</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 防止不支持（IE 11 都支持我想不到还有什么不支持的）</span></span><br><span class="line">  <span class="keyword">if</span> (crypto?.<span class="property">subtle</span>?.<span class="property">digest</span>) &#123;</span><br><span class="line">    <span class="comment">// 进行 SHA-256 哈希计算，返回 ArrayBuffer</span></span><br><span class="line">    <span class="keyword">const</span> hashBuffer = <span class="keyword">await</span> crypto.<span class="property">subtle</span>.<span class="title function_">digest</span>(<span class="string">&#x27;SHA-256&#x27;</span>, uniqueId);</span><br><span class="line">    <span class="comment">// 将 ArrayBuffer 转换为 Uint8Array</span></span><br><span class="line">    <span class="keyword">const</span> hashArray = [...<span class="keyword">new</span> <span class="title class_">Uint8Array</span>(hashBuffer)];</span><br><span class="line">    <span class="comment">// 将每个字节转换为 2 位十六进制字符串，并拼接为最终的哈希值</span></span><br><span class="line">    <span class="keyword">const</span> hash = hashArray.<span class="title function_">map</span>(<span class="function">(<span class="params">b</span>) =&gt;</span> b.<span class="title function_">toString</span>(<span class="number">16</span>).<span class="title function_">padStart</span>(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>)).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> hash.<span class="title function_">slice</span>(<span class="number">0</span>, length);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 基本不可用的一个回退方案，只能支持小并发的情况</span></span><br><span class="line">  <span class="keyword">const</span> fallbackSimple = <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>(<span class="number">36</span>) + <span class="title class_">Date</span>.<span class="title function_">now</span>().<span class="title function_">toString</span>(<span class="number">36</span>);</span><br><span class="line">  <span class="keyword">return</span> fallbackSimple.<span class="title function_">slice</span>(<span class="number">0</span>, length);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-使用示例"><a href="#3-使用示例" class="headerlink" title="3. 使用示例"></a><strong>3. 使用示例</strong></h3><p>以下是如何在项目中调用该函数的示例：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; generateUniqueId &#125; <span class="keyword">from</span> <span class="string">&#x27;./shortIdGenerator&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> inputs = [<span class="string">&#x27;user123&#x27;</span>, <span class="string">&#x27;photo.png&#x27;</span>];</span><br><span class="line"><span class="comment">// 指定输出长度为 10</span></span><br><span class="line"><span class="keyword">const</span> id = <span class="keyword">await</span> <span class="title function_">generateUniqueId</span>(inputs, <span class="literal">undefined</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="并发冲突分析"><a href="#并发冲突分析" class="headerlink" title="并发冲突分析"></a>并发冲突分析</h2><p>在高并发环境中，使用该算法生成短 ID 时，冲突的可能性取决于以下因素：</p>
+<ol>
+<li>输入数组 <code>inputValues</code> 的唯一性。</li>
+<li>随机偏置 <code>randomBias</code> 的随机性。</li>
+<li>生成的 ID 长度 <code>length</code>。</li>
+</ol>
+<p>假设输入的 <code>inputValues</code> 是一样的，比如同一个用户同一文件名的图片，那么我们就计算一下在这种情况下我们如果选择 6 位长度，能够承受的并发。</p>
+<p>以下是目标冲突概率为 $0.1%$ 时，能够承受的最大并发数 $k$ 的证明过程：</p>
+<h3 id="1-问题定义"><a href="#1-问题定义" class="headerlink" title="1. 问题定义"></a>1. 问题定义</h3><p>我们使用生日悖论公式计算冲突概率：</p>
+<p>$$<br>P(\text{冲突}) &#x3D; 1 - \exp\left(-\frac{k(k-1)}{2N}\right)<br>$$</p>
+<p>其中：</p>
+<ul>
+<li>$N &#x3D; 62^6 &#x3D; 56800235584$：6位ID的总组合数。</li>
+<li>$k$：每天生成的ID数量。</li>
+<li>我们希望 $P(\text{冲突}) \leq 0.001$（目标冲突概率为0.1%）。</li>
+</ul>
+<h3 id="2-化简公式"><a href="#2-化简公式" class="headerlink" title="2. 化简公式"></a>2. 化简公式</h3><p>设 $P(\text{冲突}) &#x3D; 0.001$，则：</p>
+<p>$$<br>0.001 &#x3D; 1 - \exp\left(-\frac{k(k-1)}{2N}\right)<br>$$</p>
+<p>化简为：</p>
+<p>$$<br>\exp\left(-\frac{k(k-1)}{2N}\right) &#x3D; 0.999<br>$$</p>
+<p>两边取自然对数：</p>
+<p>$$<br>-\frac{k(k-1)}{2N} &#x3D; \ln(0.999)<br>$$</p>
+<p>$$<br>\frac{k(k-1)}{2N} &#x3D; -\ln(0.999)<br>$$</p>
+<p>记 $-\ln(0.999)$ 为一个常数：</p>
+<p>$$<br>C &#x3D; -\ln(0.999) \approx 0.0010005003<br>$$</p>
+<p>因此：</p>
+<p>$$<br>k(k-1) &#x3D; 2N \cdot C<br>$$</p>
+<h3 id="3-求解-k"><a href="#3-求解-k" class="headerlink" title="3. 求解 $k$"></a>3. 求解 $k$</h3><p>将 $N &#x3D; 56800235584$ 和 $C &#x3D; 0.0010005003$ 代入：</p>
+<p>$$<br>k(k-1) &#x3D; 2 \cdot 56800235584 \cdot 0.0010005003<br>$$</p>
+<p>$$<br>k(k-1) \approx 113744206.03<br>$$</p>
+<p>设 $k \approx x$，近似解得：</p>
+<p>$$<br>x^2 - x - 113744206.03 &#x3D; 0<br>$$</p>
+<p>利用二次方程求根公式：</p>
+<p>$$<br>x &#x3D; \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}<br>$$</p>
+<p>其中 $a &#x3D; 1$，$b &#x3D; -1$，$c &#x3D; -113744206.03$：</p>
+<p>$$<br>x &#x3D; \frac{-(-1) \pm \sqrt{(-1)^2 - 4 \cdot 1 \cdot (-113744206.03)}}{2 \cdot 1}<br>$$</p>
+<p>$$<br>x &#x3D; \frac{1 \pm \sqrt{1 + 454976824.12}}{2}<br>$$</p>
+<p>$$<br>x &#x3D; \frac{1 \pm 21342.04}{2}<br>$$</p>
+<p>取正值：</p>
+<p>$$<br>x \approx \frac{1 + 21342.04}{2} \approx 10661.52<br>$$</p>
+<h3 id="4-结论"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论</h3><p>每天生成的最大ID数量 $k$ 为：</p>
+<p>$$<br>k \approx 10661<br>$$</p>
+<p>在这个条件下，冲突概率满足目标 $P(\text{冲突}) \leq 0.001$。</p>
+<ul>
+<li>对于 6 个字符长度的短 ID，在 inputValues 固定的情况下，每天最多生成 10661 个 ID 时，冲突概率不超过 0.1%。</li>
+<li>如果需要更低的冲突风险，可以适当增加 ID 长度（例如 8 或 10 个字符）。</li>
+</ul>
+<h2 id="为什么这种方式更优？"><a href="#为什么这种方式更优？" class="headerlink" title="为什么这种方式更优？"></a>为什么这种方式更优？</h2><h3 id="相比-UUID-的优势"><a href="#相比-UUID-的优势" class="headerlink" title="相比 UUID 的优势"></a><strong>相比 UUID 的优势</strong></h3><ol>
+<li><strong>语义化更强</strong>：<ul>
+<li>UUID 是随机字符串，无法直接反映与用户或上下文的关联。</li>
+<li>我们生成的短 ID 包含用户的输入信息，能够在某些场景下提供更高的可读性。</li>
+</ul>
+</li>
+<li><strong>长度可控</strong>：<ul>
+<li>UUID 固定为 36 个字符，而短 ID 支持自定义长度，适应不同需求。</li>
+</ul>
+</li>
+<li><strong>轻量实现</strong>：<ul>
+<li>无需额外依赖库，适合客户端环境。</li>
+</ul>
+</li>
+</ol>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a><strong>适用场景</strong></h3><ul>
+<li><strong>CDN 链接生成</strong>：用户上传图片时，生成短 ID 并拼接成可读的文件链接，例如：<code>cdn.example.com/2024/12/11/x2j239a</code>。</li>
+<li><strong>临时标识符</strong>：生成特定上下文的唯一标识，用于短期存储或快速检索。</li>
+<li><strong>增强用户体验</strong>：通过语义化短 ID 提高业务数据的可解释性。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章介绍了我在前端项目中实现的一种基于用户特定信息的短 ID 生成方法，结合 Web Crypto API，提供了高效、轻量的解决方案。通过支持上下文信息的组合和长度定制，这种短 ID 更加适应现代前端项目的需求。</p>
+
+    
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>ZL Asica<br>
+        <strong>本文链接：</strong><a href="https://www.zl-asica.com/2024/short-id-generator/" title="https:&#x2F;&#x2F;www.zl-asica.com&#x2F;2024&#x2F;short-id-generator&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;www.zl-asica.com&#x2F;2024&#x2F;short-id-generator&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0 DEED</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/frontend/" rel="tag">frontend</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1733975869008"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zl-asica.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91"><span class="toc-number">1.</span> <span class="toc-text">实现逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Crypto-API-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">Web Crypto API 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9-SHA-256%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">为什么选择 SHA-256？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">具体实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E8%BE%93%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%A0%A1%E9%AA%8C"><span class="toc-number">2.1.</span> <span class="toc-text">1. 定义输入类型校验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A0%B8%E5%BF%83%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.2.</span> <span class="toc-text">2. 核心逻辑实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">3. 使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%86%B2%E7%AA%81%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">并发冲突分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.</span> <span class="toc-text">1. 问题定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8C%96%E7%AE%80%E5%85%AC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">2. 化简公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B1%82%E8%A7%A3-k"><span class="toc-number">3.3.</span> <span class="toc-text">3. 求解 $k$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BB%93%E8%AE%BA"><span class="toc-number">3.4.</span> <span class="toc-text">4. 结论</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9B%B4%E4%BC%98%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">为什么这种方式更优？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%AF%94-UUID-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">4.1.</span> <span class="toc-text">相比 UUID 的优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">4.2.</span> <span class="toc-text">适用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div></div></body></html>
